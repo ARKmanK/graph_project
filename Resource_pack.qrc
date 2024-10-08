@@ -1,0 +1,7 @@
+<RCC>
+  <qresource prefix="newPrefix">
+    <file>img/5972622.png</file>
+    <file>img/7546863-no-bg-preview (carve.photos).png</file>
+    <file>img/work_space.png</file>
+  </qresource>
+</RCC>
