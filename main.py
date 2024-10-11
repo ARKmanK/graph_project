@@ -4,7 +4,7 @@ from PyQt6 import QtWidgets
 from PyQt6.QtWidgets import QApplication, QLabel, QTextEdit, QVBoxLayout
 from PyQt6 import QtWidgets
 from widget_des import Ui_Form
-from PyQt6.QtCore import Qt, QTimer, QRect, Qpoi
+from PyQt6.QtCore import Qt, QTimer, QRect
 from PyQt6.QtGui import QPixmap
 
 
