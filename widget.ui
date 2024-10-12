@@ -788,7 +788,7 @@ border-color: transparent;</string>
           </widget>
          </item>
          <item>
-          <widget class="QFrame" name="work_place">
+          <widget class="QFrame" name="work_place_frame">
            <property name="styleSheet">
             <string notr="true"/>
            </property>
@@ -798,11 +798,43 @@ border-color: transparent;</string>
            <property name="frameShadow">
             <enum>QFrame::Raised</enum>
            </property>
+           <widget class="QLabel" name="work_label_1">
+            <property name="geometry">
+             <rect>
+              <x>0</x>
+              <y>0</y>
+              <width>1088</width>
+              <height>201</height>
+             </rect>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">background-color: transparent;
+border-color: transparent;</string>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+           </widget>
+           <widget class="QLabel" name="work_label_2">
+            <property name="geometry">
+             <rect>
+              <x>0</x>
+              <y>201</y>
+              <width>1088</width>
+              <height>201</height>
+             </rect>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">background-color: transparent;
+border-color: transparent;</string>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+           </widget>
           </widget>
          </item>
         </layout>
-        <zorder>work_place</zorder>
-        <zorder>frame_5</zorder>
        </widget>
       </widget>
      </item>
@@ -818,8 +850,9 @@ border-color: transparent;</string>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: rgb(154, 154, 154);
-border-radius: 16px;</string>
+     <string notr="true">background-color: rgba(154, 154, 154, 160);
+border-radius: 16px;
+border:2px solid black;</string>
     </property>
     <property name="frameShape">
      <enum>QFrame::StyledPanel</enum>
@@ -840,6 +873,10 @@ border-radius: 16px;</string>
       <font>
        <pointsize>15</pointsize>
       </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: transparent;
+border: none;</string>
      </property>
      <property name="plainText">
       <string/>
@@ -941,6 +978,247 @@ border-radius: 16px;</string>
      <string/>
     </property>
    </widget>
+   <widget class="QFrame" name="connection_menu">
+    <property name="geometry">
+     <rect>
+      <x>207</x>
+      <y>502</y>
+      <width>320</width>
+      <height>150</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgba(255, 214, 88, 180);
+border-radius: 16px;
+border: 2px solid black;</string>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::StyledPanel</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Raised</enum>
+    </property>
+    <widget class="QLabel" name="label_17">
+     <property name="geometry">
+      <rect>
+       <x>82</x>
+       <y>10</y>
+       <width>165</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Bahnschrift</family>
+       <pointsize>14</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: transparent;
+border-color: transparent;
+border: none;</string>
+     </property>
+     <property name="text">
+      <string>Создать связь между</string>
+     </property>
+    </widget>
+    <widget class="QComboBox" name="comboBox_2">
+     <property name="geometry">
+      <rect>
+       <x>28</x>
+       <y>60</y>
+       <width>101</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(255, 255, 255);
+border: none;</string>
+     </property>
+    </widget>
+    <widget class="QComboBox" name="comboBox_3">
+     <property name="geometry">
+      <rect>
+       <x>200</x>
+       <y>60</y>
+       <width>101</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(255, 255, 255);
+border: none;</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="add_connection_button">
+     <property name="geometry">
+      <rect>
+       <x>122</x>
+       <y>110</y>
+       <width>75</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Bahnschrift</family>
+       <pointsize>11</pointsize>
+      </font>
+     </property>
+     <property name="cursor">
+      <cursorShape>PointingHandCursor</cursorShape>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: transparent;
+border: 2px solid black;
+border-radius: 10px;</string>
+     </property>
+     <property name="text">
+      <string>Создать</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_18">
+     <property name="geometry">
+      <rect>
+       <x>160</x>
+       <y>64</y>
+       <width>16</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Bahnschrift</family>
+       <pointsize>11</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: transparent;
+border-color: transparent;</string>
+     </property>
+     <property name="text">
+      <string>И</string>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QFrame" name="text_edit_menu">
+    <property name="geometry">
+     <rect>
+      <x>207</x>
+      <y>502</y>
+      <width>320</width>
+      <height>150</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgba(255, 214, 88, 180);
+border-radius: 16px;
+border: 2px solid black;</string>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::StyledPanel</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Raised</enum>
+    </property>
+    <widget class="QLabel" name="label_19">
+     <property name="geometry">
+      <rect>
+       <x>50</x>
+       <y>10</y>
+       <width>220</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Bahnschrift</family>
+       <pointsize>14</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: transparent;
+border-color: transparent;
+border: none;</string>
+     </property>
+     <property name="text">
+      <string>Изменить название вершины</string>
+     </property>
+    </widget>
+    <widget class="QComboBox" name="comboBox_4">
+     <property name="geometry">
+      <rect>
+       <x>28</x>
+       <y>60</y>
+       <width>101</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(255, 255, 255);
+border: none;</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="add_connection_button_2">
+     <property name="geometry">
+      <rect>
+       <x>120</x>
+       <y>110</y>
+       <width>81</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Bahnschrift</family>
+       <pointsize>11</pointsize>
+      </font>
+     </property>
+     <property name="cursor">
+      <cursorShape>PointingHandCursor</cursorShape>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: transparent;
+border: 2px solid black;
+border-radius: 10px;</string>
+     </property>
+     <property name="text">
+      <string>Применить</string>
+     </property>
+    </widget>
+    <widget class="QTextEdit" name="textEdit">
+     <property name="geometry">
+      <rect>
+       <x>150</x>
+       <y>54</y>
+       <width>161</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Bahnschrift</family>
+       <pointsize>12</pointsize>
+      </font>
+     </property>
+     <property name="cursor" stdset="0">
+      <cursorShape>IBeamCursor</cursorShape>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: transparent;
+background-color: rgb(126, 126, 126);
+border-color: transparent;</string>
+     </property>
+     <property name="undoRedoEnabled">
+      <bool>true</bool>
+     </property>
+     <property name="placeholderText">
+      <string>Новое название</string>
+     </property>
+    </widget>
+   </widget>
+   <zorder>text_edit_menu</zorder>
+   <zorder>connection_menu</zorder>
    <zorder>frame_16</zorder>
    <zorder>label</zorder>
    <zorder>verticalLayoutWidget</zorder>

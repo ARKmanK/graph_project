@@ -1,9 +1,13 @@
 import sys
+import graphviz
+import re
+
 
 from PyQt6 import QtWidgets
-from PyQt6.QtWidgets import QApplication, QLabel
+from PyQt6.QtWidgets import QApplication, QLabel, QVBoxLayout, QHBoxLayout
 from des_widget import Ui_Form
 from PyQt6.QtCore import Qt, QTimer
+from PyQt6.QtGui import QPixmap
 
 
 class DraggableLabel(QLabel):
@@ -29,7 +33,6 @@ class DraggableLabel(QLabel):
 
 class Interface(QtWidgets.QWidget):
     def __init__(self, parent=None):
-
         super().__init__(parent)
         self.ui = Ui_Form()
         self.ui.setupUi(self)
@@ -41,13 +44,24 @@ class Interface(QtWidgets.QWidget):
         self.ui.min_button.clicked.connect(self.minimize)
         self.ui.close_button.clicked.connect(self.close)
         self.ui.screenshot_button.clicked.connect(self.screenshot)
-        self.ui.pushButton.clicked.connect()
+        self.ui.pushButton.clicked.connect(self.add_node)
+        #self.ui.pushButton_2.clicked.connect(self.add_node)
+        #self.ui.pushButton_3.clicked.connect(self.add_node)
+        #self.ui.pushButton_4.clicked.connect(self.add_node)
+        self.ui.pushButton_5.clicked.connect(self.change_name)
+
+        #--------------------------------------------------------#
+        self.dot = graphviz.Digraph(comment='Моя диаграмма')
+        self.node_count = 0 
+        #--------------------------------------------------------#
 
 
     def minimize(self):        
+
         self.setWindowState(Qt.WindowState.WindowMinimized)
 
     def screenshot(self):
+
         pass
 
     def notification(self, option=None):
@@ -61,10 +75,29 @@ class Interface(QtWidgets.QWidget):
                 self.ui.plainTextEdit.setPlainText(val)                
                 QTimer.singleShot(4000, self.ui.notification_frame.lower)
 
+    def add_node(self):
+        self.node_count += 1
+        self.dot.node(str(self.node_count), f'Узел {self.node_count}')
+        self.dot.render('graph', format='png')
+        self.ui.work_label_1.setPixmap(QPixmap('graph.png'))
+        
 
+    def change_name(self):
+        self.ui.text_edit_menu.raise_()
+        node_names = self.get_nodes_names() 
+        for node_name in node_names:
+            self.ui.comboBox_4.addItem(node_name)
 
-
-
+    def get_nodes_names(self):
+        body = self.dot.body
+        node_names = []
+        for line in body:
+            match = re.search(r'\d+\s+\[label="(.*?)"\]', line)
+            if match:
+                node_name = match.group(1)
+                node_names.append(node_name)
+        return node_names
+        
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
