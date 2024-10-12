@@ -835,6 +835,8 @@ border-color: transparent;</string>
           </widget>
          </item>
         </layout>
+        <zorder>work_place_frame</zorder>
+        <zorder>frame_5</zorder>
        </widget>
       </widget>
      </item>
@@ -1050,7 +1052,7 @@ border: none;</string>
 border: none;</string>
      </property>
     </widget>
-    <widget class="QPushButton" name="add_connection_button">
+    <widget class="QPushButton" name="pushButton_7">
      <property name="geometry">
       <rect>
        <x>122</x>
@@ -1159,7 +1161,7 @@ border: none;</string>
 border: none;</string>
      </property>
     </widget>
-    <widget class="QPushButton" name="add_connection_button_2">
+    <widget class="QPushButton" name="pushButton_6">
      <property name="geometry">
       <rect>
        <x>120</x>
@@ -1216,9 +1218,13 @@ border-color: transparent;</string>
       <string>Новое название</string>
      </property>
     </widget>
+    <zorder>comboBox_4</zorder>
+    <zorder>pushButton_6</zorder>
+    <zorder>textEdit</zorder>
+    <zorder>label_19</zorder>
    </widget>
-   <zorder>text_edit_menu</zorder>
    <zorder>connection_menu</zorder>
+   <zorder>text_edit_menu</zorder>
    <zorder>frame_16</zorder>
    <zorder>label</zorder>
    <zorder>verticalLayoutWidget</zorder>
