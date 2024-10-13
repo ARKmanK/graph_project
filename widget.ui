@@ -576,7 +576,7 @@ border-color: transparent;</string>
                     </font>
                    </property>
                    <property name="text">
-                    <string>Добавить ребро</string>
+                    <string>Добавить связь</string>
                    </property>
                   </widget>
                  </item>
@@ -619,9 +619,6 @@ border-color: transparent;</string>
                    </property>
                    <property name="text">
                     <string/>
-                   </property>
-                   <property name="pixmap">
-                    <pixmap resource="Resource_pack.qrc">:/newPrefix/img/znachok1.png</pixmap>
                    </property>
                    <property name="scaledContents">
                     <bool>true</bool>
@@ -681,7 +678,7 @@ border-color: transparent;</string>
                     <string/>
                    </property>
                    <property name="pixmap">
-                    <pixmap resource="Resource_pack.qrc">:/newPrefix/img/znachok2.png</pixmap>
+                    <pixmap resource="Resource_pack.qrc">:/newPrefix/img/Без имени-1.png</pixmap>
                    </property>
                    <property name="scaledContents">
                     <bool>true</bool>
@@ -696,7 +693,7 @@ border-color: transparent;</string>
                     </font>
                    </property>
                    <property name="text">
-                    <string>Очистить область</string>
+                    <string>Изменить название</string>
                    </property>
                   </widget>
                  </item>
@@ -741,7 +738,7 @@ border-color: transparent;</string>
                     <string/>
                    </property>
                    <property name="pixmap">
-                    <pixmap resource="Resource_pack.qrc">:/newPrefix/img/Без имени-1.png</pixmap>
+                    <pixmap resource="Resource_pack.qrc">:/newPrefix/img/znachok2.png</pixmap>
                    </property>
                    <property name="scaledContents">
                     <bool>true</bool>
@@ -756,7 +753,7 @@ border-color: transparent;</string>
                     </font>
                    </property>
                    <property name="text">
-                    <string>Изменить название</string>
+                    <string>Очистить область</string>
                    </property>
                   </widget>
                  </item>
@@ -826,7 +823,7 @@ border-color: transparent;</string>
      </item>
     </layout>
    </widget>
-   <widget class="QFrame" name="frame_16">
+   <widget class="QFrame" name="notification_frame">
     <property name="geometry">
      <rect>
       <x>963</x>
@@ -865,7 +862,7 @@ border:2px solid black;</string>
 border: none;</string>
      </property>
      <property name="plainText">
-      <string/>
+      <string>hjkghjkgh</string>
      </property>
     </widget>
    </widget>
@@ -987,7 +984,7 @@ border: 2px solid black;</string>
     <widget class="QLabel" name="label_17">
      <property name="geometry">
       <rect>
-       <x>77</x>
+       <x>81</x>
        <y>10</y>
        <width>165</width>
        <height>31</height>
@@ -996,7 +993,7 @@ border: 2px solid black;</string>
      <property name="font">
       <font>
        <family>Bahnschrift</family>
-       <pointsize>14</pointsize>
+       <pointsize>12</pointsize>
       </font>
      </property>
      <property name="styleSheet">
@@ -1020,7 +1017,8 @@ border: none;
      </property>
      <property name="styleSheet">
       <string notr="true">background-color: rgb(255, 255, 255);
-border: 2px solid black;</string>
+border: 2px solid black;
+border-radius: 0px;</string>
      </property>
     </widget>
     <widget class="QComboBox" name="comboBox_3">
@@ -1034,7 +1032,8 @@ border: 2px solid black;</string>
      </property>
      <property name="styleSheet">
       <string notr="true">background-color: rgb(255, 255, 255);
-border: 2px solid black;</string>
+border: 2px solid black;
+border-radius: 0px;</string>
      </property>
     </widget>
     <widget class="QPushButton" name="pushButton_7">
@@ -1131,6 +1130,13 @@ border: none;</string>
       <string/>
      </property>
     </widget>
+    <zorder>comboBox_2</zorder>
+    <zorder>comboBox_3</zorder>
+    <zorder>pushButton_7</zorder>
+    <zorder>label_18</zorder>
+    <zorder>label_20</zorder>
+    <zorder>close_button_2</zorder>
+    <zorder>label_17</zorder>
    </widget>
    <widget class="QFrame" name="text_edit_menu">
     <property name="geometry">
@@ -1164,7 +1170,7 @@ border: 2px solid black;</string>
      <property name="font">
       <font>
        <family>Bahnschrift</family>
-       <pointsize>14</pointsize>
+       <pointsize>12</pointsize>
       </font>
      </property>
      <property name="styleSheet">
@@ -1187,7 +1193,8 @@ border: none;
      </property>
      <property name="styleSheet">
       <string notr="true">background-color: rgb(255, 255, 255);
-border: none;</string>
+border: 2px solid black;
+border-radius: 0px;</string>
      </property>
     </widget>
     <widget class="QPushButton" name="pushButton_6">
@@ -1202,7 +1209,7 @@ border: none;</string>
      <property name="font">
       <font>
        <family>Bahnschrift</family>
-       <pointsize>11</pointsize>
+       <pointsize>10</pointsize>
       </font>
      </property>
      <property name="cursor">
@@ -1229,16 +1236,16 @@ border-radius: 10px;</string>
      <property name="font">
       <font>
        <family>Bahnschrift</family>
-       <pointsize>12</pointsize>
+       <pointsize>11</pointsize>
       </font>
      </property>
      <property name="cursor" stdset="0">
       <cursorShape>IBeamCursor</cursorShape>
      </property>
      <property name="styleSheet">
-      <string notr="true">
-background-color: rgb(126, 126, 126);
-border: none;</string>
+      <string notr="true">background-color: rgb(126, 126, 126);
+border: none;
+padding-top: 8px;</string>
      </property>
      <property name="undoRedoEnabled">
       <bool>true</bool>
@@ -1293,11 +1300,11 @@ border: none;
      </property>
     </widget>
     <zorder>comboBox_4</zorder>
-    <zorder>pushButton_6</zorder>
     <zorder>textEdit</zorder>
     <zorder>label_21</zorder>
-    <zorder>label_19</zorder>
     <zorder>close_button_3</zorder>
+    <zorder>label_19</zorder>
+    <zorder>pushButton_6</zorder>
    </widget>
    <widget class="QFrame" name="change_color_menu">
     <property name="geometry">
@@ -1331,7 +1338,7 @@ border: 2px solid black;</string>
      <property name="font">
       <font>
        <family>Bahnschrift</family>
-       <pointsize>14</pointsize>
+       <pointsize>12</pointsize>
       </font>
      </property>
      <property name="styleSheet">
@@ -1413,7 +1420,7 @@ border: none;</string>
      <property name="font">
       <font>
        <family>Bahnschrift</family>
-       <pointsize>14</pointsize>
+       <pointsize>12</pointsize>
       </font>
      </property>
      <property name="styleSheet">
@@ -1438,7 +1445,7 @@ border: none;
      <property name="font">
       <font>
        <family>Bahnschrift</family>
-       <pointsize>14</pointsize>
+       <pointsize>12</pointsize>
       </font>
      </property>
      <property name="styleSheet">
@@ -1492,9 +1499,9 @@ border-radius: 8px;</string>
     </widget>
    </widget>
    <zorder>change_color_menu</zorder>
-   <zorder>text_edit_menu</zorder>
    <zorder>connection_menu</zorder>
-   <zorder>frame_16</zorder>
+   <zorder>text_edit_menu</zorder>
+   <zorder>notification_frame</zorder>
    <zorder>label</zorder>
    <zorder>verticalLayoutWidget</zorder>
    <zorder>pushButton</zorder>

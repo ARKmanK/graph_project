@@ -248,7 +248,6 @@ class Ui_Form(object):
         self.label_9.setMaximumSize(QtCore.QSize(35, 35))
         self.label_9.setStyleSheet("color: white;")
         self.label_9.setText("")
-        self.label_9.setPixmap(QtGui.QPixmap("img/znachok1.png"))
         self.label_9.setScaledContents(True)
         self.label_9.setObjectName("label_9")
         self.horizontalLayout_5.addWidget(self.label_9)
@@ -275,7 +274,7 @@ class Ui_Form(object):
         self.label_11.setMaximumSize(QtCore.QSize(39, 39))
         self.label_11.setStyleSheet("color: white;")
         self.label_11.setText("")
-        self.label_11.setPixmap(QtGui.QPixmap("img/znachok2.png"))
+        self.label_11.setPixmap(QtGui.QPixmap("img/Без имени-1.png"))
         self.label_11.setScaledContents(True)
         self.label_11.setObjectName("label_11")
         self.horizontalLayout_6.addWidget(self.label_11)
@@ -302,7 +301,7 @@ class Ui_Form(object):
         self.label_15.setMaximumSize(QtCore.QSize(35, 35))
         self.label_15.setStyleSheet("color: white;")
         self.label_15.setText("")
-        self.label_15.setPixmap(QtGui.QPixmap("img/Без имени-1.png"))
+        self.label_15.setPixmap(QtGui.QPixmap("img/znachok2.png"))
         self.label_15.setScaledContents(True)
         self.label_15.setObjectName("label_15")
         self.horizontalLayout_7.addWidget(self.label_15)
@@ -337,22 +336,21 @@ class Ui_Form(object):
         self.work_place_frame.raise_()
         self.frame_5.raise_()
         self.verticalLayout.addWidget(self.frame_3)
-        self.frame_16 = QtWidgets.QFrame(parent=self.frame)
-        self.frame_16.setGeometry(QtCore.QRect(963, 641, 321, 81))
-        self.frame_16.setStyleSheet("background-color: rgba(154, 154, 154, 160);\n"
+        self.notification_frame = QtWidgets.QFrame(parent=self.frame)
+        self.notification_frame.setGeometry(QtCore.QRect(963, 641, 321, 81))
+        self.notification_frame.setStyleSheet("background-color: rgba(154, 154, 154, 160);\n"
 "border-radius: 16px;\n"
 "border:2px solid black;")
-        self.frame_16.setFrameShape(QtWidgets.QFrame.Shape.StyledPanel)
-        self.frame_16.setFrameShadow(QtWidgets.QFrame.Shadow.Raised)
-        self.frame_16.setObjectName("frame_16")
-        self.plainTextEdit = QtWidgets.QPlainTextEdit(parent=self.frame_16)
+        self.notification_frame.setFrameShape(QtWidgets.QFrame.Shape.StyledPanel)
+        self.notification_frame.setFrameShadow(QtWidgets.QFrame.Shadow.Raised)
+        self.notification_frame.setObjectName("notification_frame")
+        self.plainTextEdit = QtWidgets.QPlainTextEdit(parent=self.notification_frame)
         self.plainTextEdit.setGeometry(QtCore.QRect(13, 5, 293, 68))
         font = QtGui.QFont()
         font.setPointSize(15)
         self.plainTextEdit.setFont(font)
         self.plainTextEdit.setStyleSheet("background-color: transparent;\n"
 "border: none;")
-        self.plainTextEdit.setPlainText("")
         self.plainTextEdit.setObjectName("plainTextEdit")
         self.pushButton = QtWidgets.QPushButton(parent=self.frame)
         self.pushButton.setGeometry(QtCore.QRect(9, 53, 191, 50))
@@ -393,10 +391,10 @@ class Ui_Form(object):
         self.connection_menu.setFrameShadow(QtWidgets.QFrame.Shadow.Raised)
         self.connection_menu.setObjectName("connection_menu")
         self.label_17 = QtWidgets.QLabel(parent=self.connection_menu)
-        self.label_17.setGeometry(QtCore.QRect(77, 10, 165, 31))
+        self.label_17.setGeometry(QtCore.QRect(81, 10, 165, 31))
         font = QtGui.QFont()
         font.setFamily("Bahnschrift")
-        font.setPointSize(14)
+        font.setPointSize(12)
         self.label_17.setFont(font)
         self.label_17.setStyleSheet("background-color: transparent;\n"
 "border: none;\n"
@@ -406,12 +404,14 @@ class Ui_Form(object):
         self.comboBox_2 = QtWidgets.QComboBox(parent=self.connection_menu)
         self.comboBox_2.setGeometry(QtCore.QRect(28, 60, 101, 31))
         self.comboBox_2.setStyleSheet("background-color: rgb(255, 255, 255);\n"
-"border: 2px solid black;")
+"border: 2px solid black;\n"
+"border-radius: 0px;")
         self.comboBox_2.setObjectName("comboBox_2")
         self.comboBox_3 = QtWidgets.QComboBox(parent=self.connection_menu)
         self.comboBox_3.setGeometry(QtCore.QRect(195, 60, 101, 31))
         self.comboBox_3.setStyleSheet("background-color: rgb(255, 255, 255);\n"
-"border: 2px solid black;")
+"border: 2px solid black;\n"
+"border-radius: 0px;")
         self.comboBox_3.setObjectName("comboBox_3")
         self.pushButton_7 = QtWidgets.QPushButton(parent=self.connection_menu)
         self.pushButton_7.setGeometry(QtCore.QRect(122, 110, 75, 23))
@@ -449,6 +449,13 @@ class Ui_Form(object):
 "border: none;")
         self.close_button_2.setText("")
         self.close_button_2.setObjectName("close_button_2")
+        self.comboBox_2.raise_()
+        self.comboBox_3.raise_()
+        self.pushButton_7.raise_()
+        self.label_18.raise_()
+        self.label_20.raise_()
+        self.close_button_2.raise_()
+        self.label_17.raise_()
         self.text_edit_menu = QtWidgets.QFrame(parent=self.frame)
         self.text_edit_menu.setGeometry(QtCore.QRect(207, 502, 320, 150))
         self.text_edit_menu.setStyleSheet("background-color: rgba(255, 214, 88, 180);\n"
@@ -461,7 +468,7 @@ class Ui_Form(object):
         self.label_19.setGeometry(QtCore.QRect(49, 10, 229, 31))
         font = QtGui.QFont()
         font.setFamily("Bahnschrift")
-        font.setPointSize(14)
+        font.setPointSize(12)
         self.label_19.setFont(font)
         self.label_19.setStyleSheet("background-color: transparent;\n"
 "border: none;\n"
@@ -470,13 +477,14 @@ class Ui_Form(object):
         self.comboBox_4 = QtWidgets.QComboBox(parent=self.text_edit_menu)
         self.comboBox_4.setGeometry(QtCore.QRect(28, 60, 101, 31))
         self.comboBox_4.setStyleSheet("background-color: rgb(255, 255, 255);\n"
-"border: none;")
+"border: 2px solid black;\n"
+"border-radius: 0px;")
         self.comboBox_4.setObjectName("comboBox_4")
         self.pushButton_6 = QtWidgets.QPushButton(parent=self.text_edit_menu)
         self.pushButton_6.setGeometry(QtCore.QRect(120, 110, 81, 23))
         font = QtGui.QFont()
         font.setFamily("Bahnschrift")
-        font.setPointSize(11)
+        font.setPointSize(10)
         self.pushButton_6.setFont(font)
         self.pushButton_6.setCursor(QtGui.QCursor(QtCore.Qt.CursorShape.PointingHandCursor))
         self.pushButton_6.setStyleSheet("background-color: transparent;\n"
@@ -487,12 +495,12 @@ class Ui_Form(object):
         self.textEdit.setGeometry(QtCore.QRect(150, 54, 161, 41))
         font = QtGui.QFont()
         font.setFamily("Bahnschrift")
-        font.setPointSize(12)
+        font.setPointSize(11)
         self.textEdit.setFont(font)
         self.textEdit.viewport().setProperty("cursor", QtGui.QCursor(QtCore.Qt.CursorShape.IBeamCursor))
-        self.textEdit.setStyleSheet("\n"
-"background-color: rgb(126, 126, 126);\n"
-"border: none;")
+        self.textEdit.setStyleSheet("background-color: rgb(126, 126, 126);\n"
+"border: none;\n"
+"padding-top: 8px;")
         self.textEdit.setUndoRedoEnabled(True)
         self.textEdit.setObjectName("textEdit")
         self.label_21 = QtWidgets.QLabel(parent=self.text_edit_menu)
@@ -513,11 +521,11 @@ class Ui_Form(object):
         self.close_button_3.setText("")
         self.close_button_3.setObjectName("close_button_3")
         self.comboBox_4.raise_()
-        self.pushButton_6.raise_()
         self.textEdit.raise_()
         self.label_21.raise_()
-        self.label_19.raise_()
         self.close_button_3.raise_()
+        self.label_19.raise_()
+        self.pushButton_6.raise_()
         self.change_color_menu = QtWidgets.QFrame(parent=self.frame)
         self.change_color_menu.setGeometry(QtCore.QRect(207, 452, 350, 261))
         self.change_color_menu.setStyleSheet("background-color: rgba(255, 214, 88, 180);\n"
@@ -530,7 +538,7 @@ class Ui_Form(object):
         self.label_43.setGeometry(QtCore.QRect(47, 10, 255, 31))
         font = QtGui.QFont()
         font.setFamily("Bahnschrift")
-        font.setPointSize(14)
+        font.setPointSize(12)
         self.label_43.setFont(font)
         self.label_43.setStyleSheet("background-color: transparent;\n"
 "border: none;\n"
@@ -561,7 +569,7 @@ class Ui_Form(object):
         self.label_44.setGeometry(QtCore.QRect(60, 50, 63, 31))
         font = QtGui.QFont()
         font.setFamily("Bahnschrift")
-        font.setPointSize(14)
+        font.setPointSize(12)
         self.label_44.setFont(font)
         self.label_44.setStyleSheet("background-color: transparent;\n"
 "border: none;\n"
@@ -572,7 +580,7 @@ class Ui_Form(object):
         self.label_46.setGeometry(QtCore.QRect(226, 50, 71, 31))
         font = QtGui.QFont()
         font.setFamily("Bahnschrift")
-        font.setPointSize(14)
+        font.setPointSize(12)
         self.label_46.setFont(font)
         self.label_46.setStyleSheet("background-color: transparent;\n"
 "border: none;\n"
@@ -594,9 +602,9 @@ class Ui_Form(object):
 "border-radius: 8px;")
         self.pushButton_15.setObjectName("pushButton_15")
         self.change_color_menu.raise_()
-        self.text_edit_menu.raise_()
         self.connection_menu.raise_()
-        self.frame_16.raise_()
+        self.text_edit_menu.raise_()
+        self.notification_frame.raise_()
         self.label.raise_()
         self.verticalLayoutWidget.raise_()
         self.pushButton.raise_()
@@ -619,10 +627,11 @@ class Ui_Form(object):
         self.label_3.setText(_translate("Form", "Алгоритмы"))
         self.label_4.setText(_translate("Form", "Скриншот"))
         self.label_5.setText(_translate("Form", "Добавить вершину"))
-        self.label_8.setText(_translate("Form", "Добавить ребро"))
+        self.label_8.setText(_translate("Form", "Добавить связь"))
         self.label_10.setText(_translate("Form", "Изменить цвет"))
-        self.label_12.setText(_translate("Form", "Очистить область"))
-        self.label_16.setText(_translate("Form", "Изменить название"))
+        self.label_12.setText(_translate("Form", "Изменить название"))
+        self.label_16.setText(_translate("Form", "Очистить область"))
+        self.plainTextEdit.setPlainText(_translate("Form", "hjkghjkgh"))
         self.label_17.setText(_translate("Form", "Создать связь между"))
         self.pushButton_7.setText(_translate("Form", "Создать"))
         self.label_18.setText(_translate("Form", "И"))
