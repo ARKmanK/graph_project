@@ -191,7 +191,8 @@ border-color: transparent;</string>
             </property>
             <property name="styleSheet">
              <string notr="true">color: black;
-background-color: rgb(255, 255, 255);</string>
+background-color: rgb(255, 255, 255);
+border: 2px solid black;</string>
             </property>
             <property name="editable">
              <bool>false</bool>
@@ -480,7 +481,7 @@ border-color: transparent;</string>
                  <rect>
                   <x>0</x>
                   <y>0</y>
-                  <width>262</width>
+                  <width>201</width>
                   <height>51</height>
                  </rect>
                 </property>
@@ -560,7 +561,7 @@ border-color: transparent;</string>
                     <string/>
                    </property>
                    <property name="pixmap">
-                    <pixmap resource="Resource_pack.qrc">:/newPrefix/img/znachok2.png</pixmap>
+                    <pixmap resource="Resource_pack.qrc">:/newPrefix/img/znachok1.png</pixmap>
                    </property>
                    <property name="scaledContents">
                     <bool>true</bool>
@@ -635,7 +636,7 @@ border-color: transparent;</string>
                     </font>
                    </property>
                    <property name="text">
-                    <string>Добавить дугу</string>
+                    <string>Изменить цвет</string>
                    </property>
                   </widget>
                  </item>
@@ -755,7 +756,7 @@ border-color: transparent;</string>
                     </font>
                    </property>
                    <property name="text">
-                    <string>Добавить текст</string>
+                    <string>Изменить название</string>
                    </property>
                   </widget>
                  </item>
@@ -768,7 +769,7 @@ border-color: transparent;</string>
                <property name="minimumSize">
                 <size>
                  <width>0</width>
-                 <height>415</height>
+                 <height>394</height>
                 </size>
                </property>
                <property name="styleSheet">
@@ -804,24 +805,7 @@ border-color: transparent;</string>
               <x>0</x>
               <y>0</y>
               <width>1088</width>
-              <height>201</height>
-             </rect>
-            </property>
-            <property name="styleSheet">
-             <string notr="true">background-color: transparent;
-border-color: transparent;</string>
-            </property>
-            <property name="text">
-             <string/>
-            </property>
-           </widget>
-           <widget class="QLabel" name="work_label_2">
-            <property name="geometry">
-             <rect>
-              <x>0</x>
-              <y>201</y>
-              <width>1088</width>
-              <height>201</height>
+              <height>671</height>
              </rect>
             </property>
             <property name="styleSheet">
@@ -908,7 +892,7 @@ border: none;</string>
     <property name="geometry">
      <rect>
       <x>9</x>
-      <y>107</y>
+      <y>111</y>
       <width>191</width>
       <height>50</height>
      </rect>
@@ -927,7 +911,7 @@ border: none;</string>
     <property name="geometry">
      <rect>
       <x>9</x>
-      <y>161</y>
+      <y>168</y>
       <width>191</width>
       <height>50</height>
      </rect>
@@ -946,7 +930,7 @@ border: none;</string>
     <property name="geometry">
      <rect>
       <x>9</x>
-      <y>213</y>
+      <y>224</y>
       <width>191</width>
       <height>50</height>
      </rect>
@@ -965,7 +949,7 @@ border: none;</string>
     <property name="geometry">
      <rect>
       <x>9</x>
-      <y>266</y>
+      <y>282</y>
       <width>191</width>
       <height>50</height>
      </rect>
@@ -1003,7 +987,7 @@ border: 2px solid black;</string>
     <widget class="QLabel" name="label_17">
      <property name="geometry">
       <rect>
-       <x>82</x>
+       <x>77</x>
        <y>10</y>
        <width>165</width>
        <height>31</height>
@@ -1017,8 +1001,9 @@ border: 2px solid black;</string>
      </property>
      <property name="styleSheet">
       <string notr="true">background-color: transparent;
-border-color: transparent;
-border: none;</string>
+border: none;
+
+</string>
      </property>
      <property name="text">
       <string>Создать связь между</string>
@@ -1035,13 +1020,13 @@ border: none;</string>
      </property>
      <property name="styleSheet">
       <string notr="true">background-color: rgb(255, 255, 255);
-border: none;</string>
+border: 2px solid black;</string>
      </property>
     </widget>
     <widget class="QComboBox" name="comboBox_3">
      <property name="geometry">
       <rect>
-       <x>200</x>
+       <x>195</x>
        <y>60</y>
        <width>101</width>
        <height>31</height>
@@ -1049,7 +1034,7 @@ border: none;</string>
      </property>
      <property name="styleSheet">
       <string notr="true">background-color: rgb(255, 255, 255);
-border: none;</string>
+border: 2px solid black;</string>
      </property>
     </widget>
     <widget class="QPushButton" name="pushButton_7">
@@ -1082,9 +1067,9 @@ border-radius: 10px;</string>
     <widget class="QLabel" name="label_18">
      <property name="geometry">
       <rect>
-       <x>160</x>
+       <x>157</x>
        <y>64</y>
-       <width>16</width>
+       <width>21</width>
        <height>21</height>
       </rect>
      </property>
@@ -1096,10 +1081,54 @@ border-radius: 10px;</string>
      </property>
      <property name="styleSheet">
       <string notr="true">background-color: transparent;
-border-color: transparent;</string>
+border:none;</string>
      </property>
      <property name="text">
       <string>И</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_20">
+     <property name="geometry">
+      <rect>
+       <x>278</x>
+       <y>3</y>
+       <width>41</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: transparent;
+border: none;</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="pixmap">
+      <pixmap resource="Resource_pack.qrc">:/newPrefix/img/7546863-no-bg-preview (carve.photos).png</pixmap>
+     </property>
+     <property name="scaledContents">
+      <bool>true</bool>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="close_button_2">
+     <property name="geometry">
+      <rect>
+       <x>282</x>
+       <y>8</y>
+       <width>31</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="cursor">
+      <cursorShape>PointingHandCursor</cursorShape>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: transparent;
+border-color: transparent;
+border: none;</string>
+     </property>
+     <property name="text">
+      <string/>
      </property>
     </widget>
    </widget>
@@ -1126,9 +1155,9 @@ border: 2px solid black;</string>
     <widget class="QLabel" name="label_19">
      <property name="geometry">
       <rect>
-       <x>50</x>
+       <x>49</x>
        <y>10</y>
-       <width>220</width>
+       <width>229</width>
        <height>31</height>
       </rect>
      </property>
@@ -1140,8 +1169,8 @@ border: 2px solid black;</string>
      </property>
      <property name="styleSheet">
       <string notr="true">background-color: transparent;
-border-color: transparent;
-border: none;</string>
+border: none;
+</string>
      </property>
      <property name="text">
       <string>Изменить название вершины</string>
@@ -1207,9 +1236,9 @@ border-radius: 10px;</string>
       <cursorShape>IBeamCursor</cursorShape>
      </property>
      <property name="styleSheet">
-      <string notr="true">background-color: transparent;
+      <string notr="true">
 background-color: rgb(126, 126, 126);
-border-color: transparent;</string>
+border: none;</string>
      </property>
      <property name="undoRedoEnabled">
       <bool>true</bool>
@@ -1218,13 +1247,253 @@ border-color: transparent;</string>
       <string>Новое название</string>
      </property>
     </widget>
+    <widget class="QLabel" name="label_21">
+     <property name="geometry">
+      <rect>
+       <x>278</x>
+       <y>3</y>
+       <width>41</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: transparent;
+border-color: transparent;
+</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="pixmap">
+      <pixmap resource="Resource_pack.qrc">:/newPrefix/img/7546863-no-bg-preview (carve.photos).png</pixmap>
+     </property>
+     <property name="scaledContents">
+      <bool>true</bool>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="close_button_3">
+     <property name="geometry">
+      <rect>
+       <x>283</x>
+       <y>9</y>
+       <width>31</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="cursor">
+      <cursorShape>PointingHandCursor</cursorShape>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: transparent;
+border: none;
+</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
     <zorder>comboBox_4</zorder>
     <zorder>pushButton_6</zorder>
     <zorder>textEdit</zorder>
+    <zorder>label_21</zorder>
     <zorder>label_19</zorder>
+    <zorder>close_button_3</zorder>
    </widget>
-   <zorder>connection_menu</zorder>
+   <widget class="QFrame" name="change_color_menu">
+    <property name="geometry">
+     <rect>
+      <x>207</x>
+      <y>452</y>
+      <width>350</width>
+      <height>261</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgba(255, 214, 88, 180);
+border-radius: 16px;
+border: 2px solid black;</string>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::StyledPanel</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Raised</enum>
+    </property>
+    <widget class="QLabel" name="label_43">
+     <property name="geometry">
+      <rect>
+       <x>47</x>
+       <y>10</y>
+       <width>255</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Bahnschrift</family>
+       <pointsize>14</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: transparent;
+border: none;
+
+</string>
+     </property>
+     <property name="text">
+      <string>Изменить цвет вершины (нажать)</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_45">
+     <property name="geometry">
+      <rect>
+       <x>302</x>
+       <y>3</y>
+       <width>41</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: transparent;
+border: none;</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="pixmap">
+      <pixmap resource="Resource_pack.qrc">:/newPrefix/img/7546863-no-bg-preview (carve.photos).png</pixmap>
+     </property>
+     <property name="scaledContents">
+      <bool>true</bool>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="close_button_7">
+     <property name="geometry">
+      <rect>
+       <x>306</x>
+       <y>8</y>
+       <width>31</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="cursor">
+      <cursorShape>PointingHandCursor</cursorShape>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: transparent;
+border-color: transparent;
+border: none;</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QListWidget" name="listWidget">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>90</y>
+       <width>160</width>
+       <height>161</height>
+      </rect>
+     </property>
+     <property name="cursor" stdset="0">
+      <cursorShape>PointingHandCursor</cursorShape>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_44">
+     <property name="geometry">
+      <rect>
+       <x>60</x>
+       <y>50</y>
+       <width>63</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Bahnschrift</family>
+       <pointsize>14</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: transparent;
+border: none;
+
+</string>
+     </property>
+     <property name="text">
+      <string>Желтый</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_46">
+     <property name="geometry">
+      <rect>
+       <x>226</x>
+       <y>50</y>
+       <width>71</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Bahnschrift</family>
+       <pointsize>14</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: transparent;
+border: none;
+
+</string>
+     </property>
+     <property name="text">
+      <string>Зеленый</string>
+     </property>
+    </widget>
+    <widget class="QListWidget" name="listWidget_2">
+     <property name="geometry">
+      <rect>
+       <x>180</x>
+       <y>90</y>
+       <width>160</width>
+       <height>161</height>
+      </rect>
+     </property>
+     <property name="cursor" stdset="0">
+      <cursorShape>PointingHandCursor</cursorShape>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_15">
+     <property name="geometry">
+      <rect>
+       <x>140</x>
+       <y>60</y>
+       <width>71</width>
+       <height>27</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Bahnschrift</family>
+       <pointsize>10</pointsize>
+      </font>
+     </property>
+     <property name="cursor">
+      <cursorShape>PointingHandCursor</cursorShape>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(255, 255, 255);
+border-radius: 8px;</string>
+     </property>
+     <property name="text">
+      <string>Сбросить</string>
+     </property>
+    </widget>
+   </widget>
+   <zorder>change_color_menu</zorder>
    <zorder>text_edit_menu</zorder>
+   <zorder>connection_menu</zorder>
    <zorder>frame_16</zorder>
    <zorder>label</zorder>
    <zorder>verticalLayoutWidget</zorder>
