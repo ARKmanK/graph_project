@@ -66,7 +66,13 @@ class Interface(QtWidgets.QWidget):
 
         #--------------------------------------------------------#
         self.dot = graphviz.Digraph(comment='Моя диаграмма')
-        self.node_count = 0 
+        self.node_count = 0
+        self.edge_count = 0
+        self.colors_count = 0
+        self.vertices = {}
+        self.edges = {}
+        self.colors = {}
+
         #--------------------------------------------------------#
 
     # Main methods--------------------------#
@@ -118,52 +124,50 @@ class Interface(QtWidgets.QWidget):
         self.render_and_show()
 
     def add_connection(self):
+        self.edge_count += 1
         node_1 = self.ui.comboBox_2.currentText()
         node_2 = self.ui.comboBox_3.currentText() 
-        self.dot.edge(node_1, node_2)
-        new_body = []
-        for line in self.dot.body:
-            if not (re.search(r'label="{}"'.format(node_1), line) or
-                    re.search(r'label="{}"'.format(node_2), line)):
-                new_body.append(line)
-        self.dot.body = new_body
-        self.dot.body = sorted(self.dot.body, key=lambda x: (int(re.search(r'\d+', x).group(0)) if re.search(r'\d+', x) else float('inf'), x))          
+        self.edges[self.edge_count] = [node_1, node_2]
+
+        self.vertices = {key: val for key, val in self.vertices.items() if val not in [node_1, node_2]}
         self.render_and_show()
 
     def change_color_yellow(self):
+        self.colors_count += 1
         selected_item = self.ui.listWidget.selectedItems()
         if selected_item:
-            node_name = selected_item[0].text() 
-            self.delete_node(node_name)
-
-            # Проверка для дубликат
-            for line in self.dot.body:
-                if re.search(r'^\s*"{}" \[fillcolor=green style=filled\]\s*$'.format(node_name), line):
-                    self.dot.body.remove(line)
-                    break
-            
-            
-
-            self.dot.node(node_name, style="filled", fillcolor="yellow")
-            self.dot.body.sort(key=lambda x: x.strip().split(' ')[1].strip('"'))
-            self.remove_duplicate_nodes()
+            node_name = selected_item[0].text()   
+            print(node_name) 
+            print(self.colors)
+            colors_copy = self.colors.copy()
+            for key, val in colors_copy.items():
+                if val[0] == node_name and val[1] == "green":
+                    del self.colors[key]
+            else:
+                self.colors[self.colors_count] = [node_name, "yellow"]
+            print(self.colors)  
+            self.vertices = {key: val for key, val in self.vertices.items() if val != node_name}                    
+            #self.colors = dict((key, val) for i, (key, val) in enumerate(self.colors.items()) if val not in list(self.colors.values())[:i])
             self.render_and_show()
 
 
     def change_color_green(self):
-        selected_item = self.ui.listWidget_2.selectedItems()
+        self.colors_count += 1
+        selected_item = self.ui.listWidget.selectedItems()
         if selected_item:
             node_name = selected_item[0].text()
-            self.delete_node(node_name)
+            print(node_name) 
+            print(self.colors)
+            colors_copy = self.colors.copy()
+            for key, val in colors_copy.items():
+                if val[0] == node_name and val[1] == "yellow":
+                    del self.colors[key]
+            else:
+                self.colors[self.colors_count] = [node_name, "green"]
 
-            for line in self.dot.body:
-                if re.search(r'^\s*"{}" \[fillcolor=yellow style=filled\]\s*$'.format(node_name), line):
-                    self.dot.body.remove(line)
-                    break
-            
-            self.dot.node(node_name, style="filled", fillcolor="green")
-            self.dot.body.sort(key=lambda x: x.strip().split(' ')[1].strip('"'))
-            self.remove_duplicate_nodes()
+            print(self.colors) 
+            self.vertices = {key: val for key, val in self.vertices.items() if val != node_name}                    
+            #self.colors = dict((key, val) for i, (key, val) in enumerate(self.colors.items()) if val not in list(self.colors.values())[:i])
             self.render_and_show()
 
     def change_color_original(self):
@@ -188,10 +192,14 @@ class Interface(QtWidgets.QWidget):
         self.render_and_show()
 
     def add_node(self):        
-        self.node_count += 1
-        self.dot.node(str(self.node_count), f'Узел {self.node_count}')
+        self.node_count += 1        
+        self.vertices[self.node_count] = f"Узел {self.node_count}"
+        #print(self.vertices)
         self.render_and_show()
         self.update_all_menus()
+        
+
+
 
     #---------------------------------------#
 
@@ -235,6 +243,16 @@ class Interface(QtWidgets.QWidget):
         self.close_all_menus()
 
     def render_and_show(self):
+        #print(self.vertices)
+        #print(self.edges)
+
+        self.dot.clear()
+        for node, label in self.vertices.items():
+            self.dot.node(str(node), label)
+        for node, edge in self.edges.items():
+            self.dot.edge(edge[0], edge[1])
+        for node, edge in self.colors.items():
+            self.dot.node(edge[0], style="filled", fillcolor=edge[1])
         self.dot.render('graph', format='png')
         self.ui.work_label_1.setPixmap(QPixmap('graph.png'))
 
