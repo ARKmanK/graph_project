@@ -437,7 +437,7 @@ border-color: transparent;</string>
           <widget class="QFrame" name="frame_5">
            <property name="maximumSize">
             <size>
-             <width>201</width>
+             <width>213</width>
              <height>16777215</height>
             </size>
            </property>
@@ -456,7 +456,7 @@ border-right: 2px solid black;</string>
              <rect>
               <x>0</x>
               <y>0</y>
-              <width>201</width>
+              <width>211</width>
               <height>681</height>
              </rect>
             </property>
@@ -577,6 +577,66 @@ border-color: transparent;</string>
                    </property>
                    <property name="text">
                     <string>Добавить связь</string>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+              </widget>
+             </item>
+             <item>
+              <widget class="QFrame" name="frame_18">
+               <property name="styleSheet">
+                <string notr="true">background-color: transparent;
+border-color: transparent;</string>
+               </property>
+               <property name="frameShape">
+                <enum>QFrame::StyledPanel</enum>
+               </property>
+               <property name="frameShadow">
+                <enum>QFrame::Raised</enum>
+               </property>
+               <widget class="QWidget" name="horizontalLayoutWidget_9">
+                <property name="geometry">
+                 <rect>
+                  <x>0</x>
+                  <y>0</y>
+                  <width>201</width>
+                  <height>51</height>
+                 </rect>
+                </property>
+                <layout class="QHBoxLayout" name="horizontalLayout_9">
+                 <item>
+                  <widget class="QLabel" name="label_27">
+                   <property name="maximumSize">
+                    <size>
+                     <width>35</width>
+                     <height>35</height>
+                    </size>
+                   </property>
+                   <property name="styleSheet">
+                    <string notr="true">color: white;</string>
+                   </property>
+                   <property name="text">
+                    <string/>
+                   </property>
+                   <property name="pixmap">
+                    <pixmap resource="Resource_pack.qrc">:/newPrefix/img/znachok2.png</pixmap>
+                   </property>
+                   <property name="scaledContents">
+                    <bool>true</bool>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QLabel" name="label_28">
+                   <property name="font">
+                    <font>
+                     <pointsize>12</pointsize>
+                    </font>
+                   </property>
+                   <property name="text">
+                    <string>Добавить расстояние</string>
                    </property>
                   </widget>
                  </item>
@@ -766,7 +826,7 @@ border-color: transparent;</string>
                <property name="minimumSize">
                 <size>
                  <width>0</width>
-                 <height>394</height>
+                 <height>336</height>
                 </size>
                </property>
                <property name="styleSheet">
@@ -801,8 +861,8 @@ border-color: transparent;</string>
              <rect>
               <x>0</x>
               <y>0</y>
-              <width>1088</width>
-              <height>671</height>
+              <width>1071</width>
+              <height>675</height>
              </rect>
             </property>
             <property name="styleSheet">
@@ -871,8 +931,8 @@ border: none;</string>
      <rect>
       <x>9</x>
       <y>53</y>
-      <width>191</width>
-      <height>50</height>
+      <width>196</width>
+      <height>47</height>
      </rect>
     </property>
     <property name="cursor">
@@ -890,8 +950,8 @@ border: none;</string>
      <rect>
       <x>9</x>
       <y>111</y>
-      <width>191</width>
-      <height>50</height>
+      <width>196</width>
+      <height>47</height>
      </rect>
     </property>
     <property name="cursor">
@@ -909,8 +969,8 @@ border: none;</string>
      <rect>
       <x>9</x>
       <y>168</y>
-      <width>191</width>
-      <height>50</height>
+      <width>196</width>
+      <height>47</height>
      </rect>
     </property>
     <property name="cursor">
@@ -928,8 +988,8 @@ border: none;</string>
      <rect>
       <x>9</x>
       <y>224</y>
-      <width>191</width>
-      <height>50</height>
+      <width>196</width>
+      <height>47</height>
      </rect>
     </property>
     <property name="cursor">
@@ -947,8 +1007,8 @@ border: none;</string>
      <rect>
       <x>9</x>
       <y>282</y>
-      <width>191</width>
-      <height>50</height>
+      <width>196</width>
+      <height>47</height>
      </rect>
     </property>
     <property name="cursor">
@@ -964,7 +1024,7 @@ border: none;</string>
    <widget class="QFrame" name="connection_menu">
     <property name="geometry">
      <rect>
-      <x>207</x>
+      <x>221</x>
       <y>502</y>
       <width>320</width>
       <height>150</height>
@@ -1141,7 +1201,7 @@ border: none;</string>
    <widget class="QFrame" name="text_edit_menu">
     <property name="geometry">
      <rect>
-      <x>207</x>
+      <x>221</x>
       <y>502</y>
       <width>320</width>
       <height>150</height>
@@ -1309,7 +1369,7 @@ border: none;
    <widget class="QFrame" name="change_color_menu">
     <property name="geometry">
      <rect>
-      <x>207</x>
+      <x>221</x>
       <y>452</y>
       <width>350</width>
       <height>261</height>
@@ -1498,10 +1558,224 @@ border-radius: 8px;</string>
      </property>
     </widget>
    </widget>
-   <zorder>change_color_menu</zorder>
-   <zorder>connection_menu</zorder>
+   <widget class="QFrame" name="add_distannce_menu">
+    <property name="geometry">
+     <rect>
+      <x>221</x>
+      <y>502</y>
+      <width>320</width>
+      <height>200</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgba(255, 214, 88, 180);
+border-radius: 16px;
+border: 2px solid black;</string>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::StyledPanel</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Raised</enum>
+    </property>
+    <widget class="QLabel" name="label_22">
+     <property name="geometry">
+      <rect>
+       <x>90</x>
+       <y>10</y>
+       <width>140</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Bahnschrift</family>
+       <pointsize>12</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: transparent;
+border: none;
+
+</string>
+     </property>
+     <property name="text">
+      <string>Добавить расстояние</string>
+     </property>
+    </widget>
+    <widget class="QComboBox" name="comboBox_5">
+     <property name="geometry">
+      <rect>
+       <x>28</x>
+       <y>60</y>
+       <width>101</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(255, 255, 255);
+border: 2px solid black;
+border-radius: 0px;</string>
+     </property>
+    </widget>
+    <widget class="QComboBox" name="comboBox_6">
+     <property name="geometry">
+      <rect>
+       <x>195</x>
+       <y>60</y>
+       <width>101</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(255, 255, 255);
+border: 2px solid black;
+border-radius: 0px;</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_16">
+     <property name="geometry">
+      <rect>
+       <x>122</x>
+       <y>167</y>
+       <width>75</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Bahnschrift</family>
+       <pointsize>11</pointsize>
+      </font>
+     </property>
+     <property name="cursor">
+      <cursorShape>PointingHandCursor</cursorShape>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: transparent;
+border: 2px solid black;
+border-radius: 10px;</string>
+     </property>
+     <property name="text">
+      <string>Создать</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_23">
+     <property name="geometry">
+      <rect>
+       <x>157</x>
+       <y>64</y>
+       <width>21</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Bahnschrift</family>
+       <pointsize>11</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: transparent;
+border:none;</string>
+     </property>
+     <property name="text">
+      <string>И</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_24">
+     <property name="geometry">
+      <rect>
+       <x>278</x>
+       <y>3</y>
+       <width>41</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: transparent;
+border: none;</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="pixmap">
+      <pixmap resource="Resource_pack.qrc">:/newPrefix/img/7546863-no-bg-preview (carve.photos).png</pixmap>
+     </property>
+     <property name="scaledContents">
+      <bool>true</bool>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="close_button_8">
+     <property name="geometry">
+      <rect>
+       <x>282</x>
+       <y>8</y>
+       <width>31</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="cursor">
+      <cursorShape>PointingHandCursor</cursorShape>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: transparent;
+border-color: transparent;
+border: none;</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QTextEdit" name="textEdit_2">
+     <property name="geometry">
+      <rect>
+       <x>121</x>
+       <y>105</y>
+       <width>78</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Bahnschrift</family>
+       <pointsize>11</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(126, 126, 126);
+border: none;
+padding-top: 8px;</string>
+     </property>
+     <property name="placeholderText">
+      <string>Расстояние</string>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QPushButton" name="pushButton_9">
+    <property name="geometry">
+     <rect>
+      <x>8</x>
+      <y>342</y>
+      <width>196</width>
+      <height>47</height>
+     </rect>
+    </property>
+    <property name="cursor">
+     <cursorShape>PointingHandCursor</cursorShape>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color:transparent;</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <zorder>add_distannce_menu</zorder>
    <zorder>text_edit_menu</zorder>
    <zorder>notification_frame</zorder>
+   <zorder>change_color_menu</zorder>
+   <zorder>connection_menu</zorder>
    <zorder>label</zorder>
    <zorder>verticalLayoutWidget</zorder>
    <zorder>pushButton</zorder>
@@ -1509,6 +1783,7 @@ border-radius: 8px;</string>
    <zorder>pushButton_3</zorder>
    <zorder>pushButton_4</zorder>
    <zorder>pushButton_5</zorder>
+   <zorder>pushButton_9</zorder>
   </widget>
  </widget>
  <resources>

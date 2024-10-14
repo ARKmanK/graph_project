@@ -1,10 +1,6 @@
 // Моя диаграмма
 digraph {
-	"Узел 2" [fillcolor=green style=filled]
+	"Узел 1" -> "Узел 2"
+	"Узел 1" [fillcolor=yellow style=filled]
 	"Узел 2" [fillcolor=yellow style=filled]
-	fds -> "Узел 2"
-	"Узел 3" -> fds
-	"Узел 3" [fillcolor=green style=filled]
-	"Узел 3" [fillcolor=yellow style=filled]
-	fds [fillcolor=yellow style=filled]
 }
