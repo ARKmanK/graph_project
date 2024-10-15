@@ -63,7 +63,6 @@ class Interface(QtWidgets.QWidget):
         self.ui.listWidget.itemSelectionChanged.connect(self.change_color_yellow)
         self.ui.listWidget_2.itemSelectionChanged.connect(self.change_color_green)
 
-
         #--------------------------------------------------------#
         self.dot = graphviz.Digraph(comment='Моя диаграмма')
         self.node_count = 0
@@ -72,11 +71,10 @@ class Interface(QtWidgets.QWidget):
         self.vertices = {}
         self.edges = {}
         self.colors = {}
-
         #--------------------------------------------------------#
 
     # Main methods--------------------------#
-    def open_change_name_menu(self):
+    def open_change_name_menu(self):        
         self.close_all_menus()
         self.ui.text_edit_menu.raise_()
         node_names = self.get_nodes_names()
@@ -116,11 +114,36 @@ class Interface(QtWidgets.QWidget):
     def change_node_name(self):
         old_node_name = self.ui.comboBox_4.currentText()
         new_node_name = self.ui.textEdit.toPlainText()
-        for i, line in enumerate(self.dot.body):
-            match = re.search(r'\d+\s+\[label="{}"'.format(old_node_name), line)
-            if match:
-                new_line = line.replace(old_node_name, new_node_name)
-                self.dot.body[i] = new_line
+
+        # Проверка на дубликат
+        for key, val in self.vertices.items():
+            if new_node_name == val:
+                self.notification("name exist")
+                return
+        for key, val in self.edges.items():
+            if new_node_name == val[0] or new_node_name == val[1]:
+                self.notification("name exist")
+                return  
+        for key, val in self.colors.items():
+            if new_node_name == val[0] :
+                self.notification("name exist")
+                return
+
+        # Замена имени на новое
+        for key, val in self.vertices.items():
+            if val == old_node_name: 
+                self.vertices[key] = new_node_name
+        for key, val in self.edges.items():
+            if val[0] == old_node_name:
+                self.edges[key] = [new_node_name, val[1]]
+            elif val[1] == old_node_name:
+                self.edges[key] = [val[0], new_node_name]
+        for key, val in self.colors.items():
+            if val[0] == old_node_name:
+                self.colors[key] = [new_node_name, val[1]]
+
+        self.show_dicts()
+        self.update_all_menus()
         self.render_and_show()
 
     def add_connection(self):
@@ -136,38 +159,30 @@ class Interface(QtWidgets.QWidget):
         self.colors_count += 1
         selected_item = self.ui.listWidget.selectedItems()
         if selected_item:
-            node_name = selected_item[0].text()   
-            print(node_name) 
-            print(self.colors)
+            node_name = selected_item[0].text()
             colors_copy = self.colors.copy()
             for key, val in colors_copy.items():
                 if val[0] == node_name and val[1] == "green":
                     del self.colors[key]
             else:
                 self.colors[self.colors_count] = [node_name, "yellow"]
-            print(self.colors)  
             self.vertices = {key: val for key, val in self.vertices.items() if val != node_name}                    
-            #self.colors = dict((key, val) for i, (key, val) in enumerate(self.colors.items()) if val not in list(self.colors.values())[:i])
+            self.colors = dict((key, val) for i, (key, val) in enumerate(self.colors.items()) if val not in list(self.colors.values())[:i])
             self.render_and_show()
-
 
     def change_color_green(self):
         self.colors_count += 1
-        selected_item = self.ui.listWidget.selectedItems()
+        selected_item = self.ui.listWidget_2.selectedItems()
         if selected_item:
             node_name = selected_item[0].text()
-            print(node_name) 
-            print(self.colors)
             colors_copy = self.colors.copy()
             for key, val in colors_copy.items():
                 if val[0] == node_name and val[1] == "yellow":
                     del self.colors[key]
             else:
                 self.colors[self.colors_count] = [node_name, "green"]
-
-            print(self.colors) 
             self.vertices = {key: val for key, val in self.vertices.items() if val != node_name}                    
-            #self.colors = dict((key, val) for i, (key, val) in enumerate(self.colors.items()) if val not in list(self.colors.values())[:i])
+            self.colors = dict((key, val) for i, (key, val) in enumerate(self.colors.items()) if val not in list(self.colors.values())[:i])
             self.render_and_show()
 
     def change_color_original(self):
@@ -194,65 +209,45 @@ class Interface(QtWidgets.QWidget):
     def add_node(self):        
         self.node_count += 1        
         self.vertices[self.node_count] = f"Узел {self.node_count}"
-        #print(self.vertices)
         self.render_and_show()
         self.update_all_menus()
-        
-
-
 
     #---------------------------------------#
 
     # Support methods-----------------------#
     def get_nodes_names(self):
-        body = self.dot.body
-        node_names = []
-        for line in body:
-            match = re.search(r'\d+\s+\[label="(.*?)"\]', line)
-            if match:
-                node_name = match.group(1)
-                node_names.append(node_name)
-            else:
-                match = re.search(r'"(.*?)"\s*->\s*"(.*?)"', line)
-                if match:
-                    node_names.append(match.group(1))
-                    node_names.append(match.group(2))
-                else:
-                    match = re.search(r'"(.*?)"\s*\[.*?\]', line)
-                    if match:
-                        node_name = match.group(1)
-                        node_names.append(node_name)
-            match = re.search(r'\[label="(.*?)"\]', line)
-            if match:
-                node_name = match.group(1)
-                node_names.append(node_name)
-            else:
-                match = re.search(r'(\w+)\s*\[.*?\]', line)
-                if match:
-                    node_name = match.group(1)
-                    node_names.append(node_name)
-        node_names = sorted(list(set(node_names)), key=lambda x: (int(re.search(r'\d+', x).group(0)) if re.search(r'\d+', x) else float('inf'), x))
-        #print(node_names)
+        node_names = set()
+        for val in self.vertices.values():
+            node_names.add(val)
+        for val in self.edges.values():
+            node_names.update(val)
+        for val in self.colors.values():
+            node_names.add(val[0])
+        node_names = list(node_names)
+        node_names.sort(key=lambda x: (not x.startswith("Узел "), int(re.search(r'\d+', x).group(0)) if re.search(r'\d+', x) else float('inf'), x))
         return node_names
 
     def clear_graph(self):
         self.dot.clear()
         self.node_count = 0
+        self.edge_count = 0
+        self.colors_count = 0
+        self.vertices = {}
+        self.edges = {}
+        self.colors = {}
         self.ui.work_label_1.setPixmap(QPixmap())
         self.notification("wipe")
         self.close_all_menus()
 
     def render_and_show(self):
-        #print(self.vertices)
-        #print(self.edges)
-
         self.dot.clear()
         for node, label in self.vertices.items():
-            self.dot.node(str(node), label)
-        for node, edge in self.edges.items():
+            self.dot.node(label, label)
+        for edge in self.edges.values():
             self.dot.edge(edge[0], edge[1])
-        for node, edge in self.colors.items():
-            self.dot.node(edge[0], style="filled", fillcolor=edge[1])
+        for color in self.colors.values():
+            self.dot.node(color[0], style="filled", fillcolor=color[1])
+
         self.dot.render('graph', format='png')
         self.ui.work_label_1.setPixmap(QPixmap('graph.png'))
 
@@ -260,8 +255,8 @@ class Interface(QtWidgets.QWidget):
         self.dot.body = [line for line in self.dot.body if f'label="{node_name}"' not in line]
         self.dot.body = sorted(self.dot.body, key=lambda x: x.split('"')[1] if '"' in x else x.split('[')[0])
 
-    def delete_connection(self, node_1=None, node_2=None):
-        self.dot.body = [line for line in self.dot.body if f'"{node_1}" -> "{node_2}"' not in line]
+    #def delete_connection(self, node_1=None, node_2=None):
+        #self.dot.body = [line for line in self.dot.body if f'"{node_1}" -> "{node_2}"' not in line]
 
     def update_all_menus(self):
         node_names = self.get_nodes_names()
@@ -290,13 +285,14 @@ class Interface(QtWidgets.QWidget):
     def minimize(self):
         self.setWindowState(Qt.WindowState.WindowMinimized)
 
-    def screenshot(self):
-        pass
+    #def screenshot(self):
+        #pass
 
     def notification(self, option=None):
         options_dict = {
             "screenshot": "Скриншот был добавлен в буфер обмена",
-            "wipe": "Рабочая область очищена"
+            "wipe": "Рабочая область очищена",
+            "name exist": "Данное имя уже существует"
         }
         for key, val in options_dict.items():
             if option == key:
@@ -310,15 +306,28 @@ class Interface(QtWidgets.QWidget):
         self.ui.change_color_menu.lower()
         self.ui.add_distance_menu.lower()
 
-    def remove_duplicate_nodes(self):
-        node_names = set()
-        new_body = []
-        for line in self.dot.body:
-            name = line.strip().split(' ')[1].strip('"')
-            if name not in node_names:
-                node_names.add(name)
-                new_body.append(line)
-        self.dot.body = new_body
+    #def remove_duplicate_nodes(self):
+        #node_names = set()
+        #new_body = []
+        #for line in self.dot.body:
+            #name = line.strip().split(' ')[1].strip('"')
+            #if name not in node_names:
+                #node_names.add(name)
+                #new_body.append(line)
+        #self.dot.body = new_body
+
+    def show_dicts(self):
+        info = f"""
+        vertices:
+        {self.vertices}
+
+        edges:
+        {self.edges}
+
+        colors:
+        {self.colors}
+        """
+        print(info)
 
     #---------------------------------------#
 

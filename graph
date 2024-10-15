@@ -1,8 +1,7 @@
 // Моя диаграмма
 digraph {
-	"Узел 1" [fillcolor=yellow style=filled]
-	"Узел 2" [fillcolor=yellow style=filled]
-	"Узел 3" [fillcolor=green style=filled]
-	"Узел 3" [fillcolor=green style=filled]
-	"Узел 3" [fillcolor=green style=filled]
+	1 -> 2
+	1 [fillcolor=yellow style=filled]
+	2 [fillcolor=yellow style=filled]
+	3 [fillcolor=green style=filled]
 }

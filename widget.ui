@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1291</width>
-    <height>731</height>
+    <width>1290</width>
+    <height>729</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -621,7 +621,7 @@ border-color: transparent;</string>
                     <string/>
                    </property>
                    <property name="pixmap">
-                    <pixmap resource="Resource_pack.qrc">:/newPrefix/img/znachok2.png</pixmap>
+                    <pixmap resource="Resource_pack.qrc">:/newPrefix/img/znachok_5.png</pixmap>
                    </property>
                    <property name="scaledContents">
                     <bool>true</bool>
@@ -679,6 +679,9 @@ border-color: transparent;</string>
                    </property>
                    <property name="text">
                     <string/>
+                   </property>
+                   <property name="pixmap">
+                    <pixmap resource="Resource_pack.qrc">:/newPrefix/img/znachok_3.png</pixmap>
                    </property>
                    <property name="scaledContents">
                     <bool>true</bool>
@@ -738,7 +741,7 @@ border-color: transparent;</string>
                     <string/>
                    </property>
                    <property name="pixmap">
-                    <pixmap resource="Resource_pack.qrc">:/newPrefix/img/Без имени-1.png</pixmap>
+                    <pixmap resource="Resource_pack.qrc">:/newPrefix/img/znachok_4.png</pixmap>
                    </property>
                    <property name="scaledContents">
                     <bool>true</bool>
@@ -1558,7 +1561,7 @@ border-radius: 8px;</string>
      </property>
     </widget>
    </widget>
-   <widget class="QFrame" name="add_distannce_menu">
+   <widget class="QFrame" name="add_distance_menu">
     <property name="geometry">
      <rect>
       <x>221</x>
@@ -1771,7 +1774,7 @@ padding-top: 8px;</string>
      <string/>
     </property>
    </widget>
-   <zorder>add_distannce_menu</zorder>
+   <zorder>add_distance_menu</zorder>
    <zorder>text_edit_menu</zorder>
    <zorder>notification_frame</zorder>
    <zorder>change_color_menu</zorder>
