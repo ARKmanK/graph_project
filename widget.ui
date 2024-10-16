@@ -863,9 +863,9 @@ border-color: transparent;</string>
             <property name="geometry">
              <rect>
               <x>0</x>
-              <y>0</y>
+              <y>70</y>
               <width>1071</width>
-              <height>481</height>
+              <height>501</height>
              </rect>
             </property>
             <property name="styleSheet">
@@ -1306,7 +1306,7 @@ border-radius: 10px;</string>
       <cursorShape>IBeamCursor</cursorShape>
      </property>
      <property name="styleSheet">
-      <string notr="true">background-color: rgb(126, 126, 126);
+      <string notr="true">background-color: rgb(255, 255, 255);
 border: none;
 padding-top: 8px;</string>
      </property>
@@ -1622,16 +1622,16 @@ border: 2px solid black;</string>
     <widget class="QLabel" name="label_22">
      <property name="geometry">
       <rect>
-       <x>90</x>
+       <x>86</x>
        <y>10</y>
-       <width>140</width>
+       <width>148</width>
        <height>31</height>
       </rect>
      </property>
      <property name="font">
       <font>
        <family>Bahnschrift</family>
-       <pointsize>12</pointsize>
+       <pointsize>11</pointsize>
       </font>
      </property>
      <property name="styleSheet">
@@ -1784,7 +1784,7 @@ border: none;</string>
       </font>
      </property>
      <property name="styleSheet">
-      <string notr="true">background-color: rgb(126, 126, 126);
+      <string notr="true">background-color: rgb(255, 255, 255);
 border: none;
 padding-top: 8px;</string>
      </property>
@@ -1812,11 +1812,11 @@ padding-top: 8px;</string>
      <string/>
     </property>
    </widget>
+   <zorder>text_edit_menu</zorder>
+   <zorder>connection_menu</zorder>
    <zorder>change_color_menu</zorder>
    <zorder>add_distance_menu</zorder>
-   <zorder>text_edit_menu</zorder>
    <zorder>notification_frame</zorder>
-   <zorder>connection_menu</zorder>
    <zorder>label</zorder>
    <zorder>verticalLayoutWidget</zorder>
    <zorder>pushButton</zorder>

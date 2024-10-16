@@ -1,11 +1,14 @@
 // Моя диаграмма
 digraph {
+	"Узел 1" [label="Узел 1"]
+	"Узел 2" [label="Узел 2"]
+	"Узел 3" [label="Узел 3"]
+	"Узел 4" [label="Узел 4"]
 	"Узел 5" [label="Узел 5"]
-	"Узел 1" -> "Узел 2" [label=3]
-	"Узел 3" -> "Узел 2"
-	"Узел 4" -> "Узел 3"
-	"Узел 2" [fillcolor=white style=filled]
-	"Узел 1" [fillcolor=white style=filled]
-	"Узел 3" [fillcolor=white style=filled]
-	"Узел 4" [fillcolor=white style=filled]
+	"Узел 6" [label="Узел 6"]
+	"Узел 7" [label="Узел 7"]
+	"Узел 8" [label="Узел 8"]
+	"Узел 9" [label="Узел 9"]
+	"Узел 10" [label="Узел 10"]
+	rankdir=LR
 }
