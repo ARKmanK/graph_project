@@ -1,5 +1,11 @@
 // Моя диаграмма
 digraph {
-	"Узел 1" [label="Узел 1"]
-	"Узел 2" [label="Узел 2"]
+	"Узел 5" [label="Узел 5"]
+	"Узел 1" -> "Узел 2" [label=3]
+	"Узел 3" -> "Узел 2"
+	"Узел 4" -> "Узел 3"
+	"Узел 2" [fillcolor=white style=filled]
+	"Узел 1" [fillcolor=white style=filled]
+	"Узел 3" [fillcolor=white style=filled]
+	"Узел 4" [fillcolor=white style=filled]
 }

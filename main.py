@@ -171,6 +171,7 @@ class Interface(QtWidgets.QWidget):
             self.vertices = {key: val for key, val in self.vertices.items() if val != node_name}                    
             self.colors = dict((key, val) for i, (key, val) in enumerate(self.colors.items()) if val not in list(self.colors.values())[:i])
             self.render_and_show()
+            #self.show_dicts()
 
     def change_color_green(self):
         self.colors_count += 1
@@ -186,6 +187,7 @@ class Interface(QtWidgets.QWidget):
             self.vertices = {key: val for key, val in self.vertices.items() if val != node_name}                    
             self.colors = dict((key, val) for i, (key, val) in enumerate(self.colors.items()) if val not in list(self.colors.values())[:i])
             self.render_and_show()
+            #self.show_dicts()
 
     def change_color_white(self):
         self.colors_count += 1
@@ -201,6 +203,7 @@ class Interface(QtWidgets.QWidget):
             self.vertices = {key: val for key, val in self.vertices.items() if val != node_name}                    
             self.colors = dict((key, val) for i, (key, val) in enumerate(self.colors.items()) if val not in list(self.colors.values())[:i])
             self.render_and_show()
+            #self.show_dicts()
 
     def change_color_original(self):     
         for key, val in self.colors.items():
@@ -213,14 +216,13 @@ class Interface(QtWidgets.QWidget):
         node_2 = self.ui.comboBox_6.currentText() 
         length = self.ui.textEdit_2.toPlainText()
 
-        for line in self.dot.body:
-            if re.search(r'"{}" -> "{}" \[.*\]'.format(node_1, node_2), line):
-                self.dot.body.remove(line)
+        for key, val in self.edges.items():
+            if val[0] == node_1 and val[1] == node_2:
+                self.edges[key] = [val[0], val[1], length]
                 break
-
-        self.delete_node(node_1)
-        self.delete_node(node_2)
-        self.dot.edge(node_1, node_2, weight=length, label=length, color="black")
+        else:
+            self.notification("no edges")
+            return
         self.render_and_show()
 
     def add_node(self):        
@@ -237,7 +239,10 @@ class Interface(QtWidgets.QWidget):
         for val in self.vertices.values():
             node_names.add(val)
         for val in self.edges.values():
-            node_names.update(val)
+            if len(val) == 2:
+                node_names.update(val)
+            elif len(val) == 3:
+                node_names.update(val[:2])
         for val in self.colors.values():
             node_names.add(val[0])
         node_names = list(node_names)
@@ -257,11 +262,19 @@ class Interface(QtWidgets.QWidget):
         self.close_all_menus()
 
     def render_and_show(self):
+        self.show_dicts()
         self.dot.clear()
         for node, label in self.vertices.items():
             self.dot.node(label, label)
+
+
         for edge in self.edges.values():
-            self.dot.edge(edge[0], edge[1])
+            if len(edge) == 2:
+                self.dot.edge(edge[0], edge[1])
+            elif len(edge) == 3:
+                self.dot.edge(edge[0], edge[1], label=edge[2])
+
+
         for color in self.colors.values():
             self.dot.node(color[0], style="filled", fillcolor=color[1])
 
@@ -309,7 +322,8 @@ class Interface(QtWidgets.QWidget):
         options_dict = {
             "screenshot": "Скриншот был добавлен в буфер обмена",
             "wipe": "Рабочая область очищена",
-            "name exist": "Данное имя уже существует"
+            "name exist": "Данное имя уже существует",
+            "no edges": "Вершины не соединены"
         }
         for key, val in options_dict.items():
             if option == key:

@@ -30,7 +30,7 @@
         return node_names
 """
 
-vertices = {3: '2'}
+"""vertices = {3: '2'}
 edges = {1: ['1', 'Узел 2']}
 colors = {}
 
@@ -67,10 +67,42 @@ for key, val in colors.items():
 
 print(vertices)
 print(edges)
-print(colors)
+print(colors)"""
 
 """import re
 node_names = ['Узел 2', 'Узел 1', "Узел 141", "1", "14", 'dfgdf']
 node_names.sort(key=lambda x: (not x.startswith("Узел "), int(re.search(r'\d+', x).group(0)) if re.search(r'\d+', x) else float('inf'), x))
 print(node_names)
 """
+
+
+#colors = {1: ["Узел 1", "white"]}
+
+vertices = {}
+
+edges = {1: ['Узел 1', 'Узел 2', '3'], 2: ['Узел 3', 'Узел 2'], 3: ['Узел 4', 'Узел 3']}
+
+colors = {}
+
+def add_distance():
+    node_1 = "Узел 4"
+    node_2 = "Узел 3"
+    length = "2"
+
+    if edges:
+        for key, val in edges.items():
+            if val[0] == node_1 and val[1] == node_2:
+                edges[key] = [val[0], val[1], length]
+                break
+        else:
+            print("не соединены")
+            return    
+    else:
+        print("не соединены")
+        return
+    
+    print(edges)
+
+
+print(add_distance())
+
