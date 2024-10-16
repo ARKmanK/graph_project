@@ -865,7 +865,7 @@ border-color: transparent;</string>
               <x>0</x>
               <y>0</y>
               <width>1071</width>
-              <height>675</height>
+              <height>481</height>
              </rect>
             </property>
             <property name="styleSheet">
@@ -1374,7 +1374,7 @@ border: none;
      <rect>
       <x>221</x>
       <y>452</y>
-      <width>350</width>
+      <width>516</width>
       <height>261</height>
      </rect>
     </property>
@@ -1392,7 +1392,7 @@ border: 2px solid black;</string>
     <widget class="QLabel" name="label_43">
      <property name="geometry">
       <rect>
-       <x>47</x>
+       <x>154</x>
        <y>10</y>
        <width>255</width>
        <height>31</height>
@@ -1417,7 +1417,7 @@ border: none;
     <widget class="QLabel" name="label_45">
      <property name="geometry">
       <rect>
-       <x>302</x>
+       <x>474</x>
        <y>3</y>
        <width>41</width>
        <height>41</height>
@@ -1440,8 +1440,8 @@ border: none;</string>
     <widget class="QPushButton" name="close_button_7">
      <property name="geometry">
       <rect>
-       <x>306</x>
-       <y>8</y>
+       <x>479</x>
+       <y>9</y>
        <width>31</width>
        <height>31</height>
       </rect>
@@ -1474,7 +1474,7 @@ border: none;</string>
     <widget class="QLabel" name="label_44">
      <property name="geometry">
       <rect>
-       <x>60</x>
+       <x>63</x>
        <y>50</y>
        <width>63</width>
        <height>31</height>
@@ -1499,7 +1499,7 @@ border: none;
     <widget class="QLabel" name="label_46">
      <property name="geometry">
       <rect>
-       <x>226</x>
+       <x>228</x>
        <y>50</y>
        <width>71</width>
        <height>31</height>
@@ -1524,7 +1524,7 @@ border: none;
     <widget class="QListWidget" name="listWidget_2">
      <property name="geometry">
       <rect>
-       <x>180</x>
+       <x>178</x>
        <y>90</y>
        <width>160</width>
        <height>161</height>
@@ -1537,8 +1537,8 @@ border: none;
     <widget class="QPushButton" name="pushButton_15">
      <property name="geometry">
       <rect>
-       <x>140</x>
-       <y>60</y>
+       <x>391</x>
+       <y>10</y>
        <width>71</width>
        <height>27</height>
       </rect>
@@ -1558,6 +1558,44 @@ border-radius: 8px;</string>
      </property>
      <property name="text">
       <string>Сбросить</string>
+     </property>
+    </widget>
+    <widget class="QListWidget" name="listWidget_3">
+     <property name="geometry">
+      <rect>
+       <x>346</x>
+       <y>90</y>
+       <width>160</width>
+       <height>161</height>
+      </rect>
+     </property>
+     <property name="cursor" stdset="0">
+      <cursorShape>PointingHandCursor</cursorShape>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_47">
+     <property name="geometry">
+      <rect>
+       <x>404</x>
+       <y>50</y>
+       <width>71</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Bahnschrift</family>
+       <pointsize>12</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: transparent;
+border: none;
+
+</string>
+     </property>
+     <property name="text">
+      <string>Белый</string>
      </property>
     </widget>
    </widget>
@@ -1774,10 +1812,10 @@ padding-top: 8px;</string>
      <string/>
     </property>
    </widget>
+   <zorder>change_color_menu</zorder>
    <zorder>add_distance_menu</zorder>
    <zorder>text_edit_menu</zorder>
    <zorder>notification_frame</zorder>
-   <zorder>change_color_menu</zorder>
    <zorder>connection_menu</zorder>
    <zorder>label</zorder>
    <zorder>verticalLayoutWidget</zorder>

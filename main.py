@@ -47,7 +47,6 @@ class Interface(QtWidgets.QWidget):
         self.ui.close_button_3.clicked.connect(self.close_all_menus)
         self.ui.close_button_7.clicked.connect(self.close_all_menus)
         self.ui.close_button_8.clicked.connect(self.close_all_menus)
-        self.ui.screenshot_button.clicked.connect(self.screenshot)
         self.ui.pushButton.clicked.connect(self.add_node)
         self.ui.pushButton_2.clicked.connect(self.open_connection_menu)
         self.ui.pushButton_3.clicked.connect(self.open_add_distance_menu)
@@ -62,6 +61,7 @@ class Interface(QtWidgets.QWidget):
         
         self.ui.listWidget.itemSelectionChanged.connect(self.change_color_yellow)
         self.ui.listWidget_2.itemSelectionChanged.connect(self.change_color_green)
+        self.ui.listWidget_3.itemSelectionChanged.connect(self.change_color_white)
 
         #--------------------------------------------------------#
         self.dot = graphviz.Digraph(comment='Моя диаграмма')
@@ -98,8 +98,10 @@ class Interface(QtWidgets.QWidget):
         node_names = self.get_nodes_names()
         self.ui.listWidget.clear()
         self.ui.listWidget_2.clear()
+        self.ui.listWidget_3.clear()
         self.ui.listWidget.addItems(node_names)
         self.ui.listWidget_2.addItems(node_names)
+        self.ui.listWidget_3.addItems(node_names)
 
     def open_add_distance_menu(self):
         self.close_all_menus()
@@ -162,7 +164,7 @@ class Interface(QtWidgets.QWidget):
             node_name = selected_item[0].text()
             colors_copy = self.colors.copy()
             for key, val in colors_copy.items():
-                if val[0] == node_name and val[1] == "green":
+                if val[0] == node_name and (val[1] == "green" or val[1] == "white"):
                     del self.colors[key]
             else:
                 self.colors[self.colors_count] = [node_name, "yellow"]
@@ -177,7 +179,7 @@ class Interface(QtWidgets.QWidget):
             node_name = selected_item[0].text()
             colors_copy = self.colors.copy()
             for key, val in colors_copy.items():
-                if val[0] == node_name and val[1] == "yellow":
+                if val[0] == node_name and (val[1] == "yellow" or val[1] == "white"):
                     del self.colors[key]
             else:
                 self.colors[self.colors_count] = [node_name, "green"]
@@ -185,10 +187,25 @@ class Interface(QtWidgets.QWidget):
             self.colors = dict((key, val) for i, (key, val) in enumerate(self.colors.items()) if val not in list(self.colors.values())[:i])
             self.render_and_show()
 
-    def change_color_original(self):
-        node_names = self.get_nodes_names()        
-        for name in node_names:
-            self.dot.node(name, style="filled", fillcolor="white")
+    def change_color_white(self):
+        self.colors_count += 1
+        selected_item = self.ui.listWidget_3.selectedItems()
+        if selected_item:
+            node_name = selected_item[0].text()
+            colors_copy = self.colors.copy()
+            for key, val in colors_copy.items():
+                if val[0] == node_name and (val[1] == "yellow" or val[1] == "green"):
+                    del self.colors[key]
+            else:
+                self.colors[self.colors_count] = [node_name, "white"]
+            self.vertices = {key: val for key, val in self.vertices.items() if val != node_name}                    
+            self.colors = dict((key, val) for i, (key, val) in enumerate(self.colors.items()) if val not in list(self.colors.values())[:i])
+            self.render_and_show()
+
+    def change_color_original(self):     
+        for key, val in self.colors.items():
+            if val[1] != "white":
+                self.colors[key] = [val[0], "white"]                
         self.render_and_show()
 
     def add_distance(self):
