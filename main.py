@@ -120,15 +120,15 @@ class Interface(QtWidgets.QWidget):
         # Проверка на дубликат
         for key, val in self.vertices.items():
             if new_node_name == val:
-                self.notification("name exist")
+                self.notification("name exists")
                 return
         for key, val in self.edges.items():
             if new_node_name == val[0] or new_node_name == val[1]:
-                self.notification("name exist")
+                self.notification("name exists")
                 return  
         for key, val in self.colors.items():
             if new_node_name == val[0] :
-                self.notification("name exist")
+                self.notification("name exists")
                 return
 
         # Замена имени на новое
@@ -171,7 +171,6 @@ class Interface(QtWidgets.QWidget):
             self.vertices = {key: val for key, val in self.vertices.items() if val != node_name}                    
             self.colors = dict((key, val) for i, (key, val) in enumerate(self.colors.items()) if val not in list(self.colors.values())[:i])
             self.render_and_show()
-            #self.show_dicts()
 
     def change_color_green(self):
         self.colors_count += 1
@@ -187,7 +186,6 @@ class Interface(QtWidgets.QWidget):
             self.vertices = {key: val for key, val in self.vertices.items() if val != node_name}                    
             self.colors = dict((key, val) for i, (key, val) in enumerate(self.colors.items()) if val not in list(self.colors.values())[:i])
             self.render_and_show()
-            #self.show_dicts()
 
     def change_color_white(self):
         self.colors_count += 1
@@ -203,9 +201,8 @@ class Interface(QtWidgets.QWidget):
             self.vertices = {key: val for key, val in self.vertices.items() if val != node_name}                    
             self.colors = dict((key, val) for i, (key, val) in enumerate(self.colors.items()) if val not in list(self.colors.values())[:i])
             self.render_and_show()
-            #self.show_dicts()
 
-    def change_color_original(self):     
+    def change_color_original(self):
         for key, val in self.colors.items():
             if val[1] != "white":
                 self.colors[key] = [val[0], "white"]                
@@ -225,13 +222,13 @@ class Interface(QtWidgets.QWidget):
             return
         self.render_and_show()
 
-    def add_node(self):        
+    def add_node(self):
         self.node_count += 1        
         self.vertices[self.node_count] = f"Узел {self.node_count}"
         self.render_and_show()
         self.update_all_menus()
 
-    #---------------------------------------#
+    # Main methods--------------------------#
 
     # Support methods-----------------------#
     def get_nodes_names(self):
@@ -264,29 +261,24 @@ class Interface(QtWidgets.QWidget):
     def render_and_show(self):
         self.show_dicts()
         self.dot.clear()
+
         for node, label in self.vertices.items():
             self.dot.node(label, label)
-
-
         for edge in self.edges.values():
             if len(edge) == 2:
                 self.dot.edge(edge[0], edge[1])
             elif len(edge) == 3:
                 self.dot.edge(edge[0], edge[1], label=edge[2])
-
-
         for color in self.colors.values():
             self.dot.node(color[0], style="filled", fillcolor=color[1])
 
+        self.dot.attr(rankdir='LR')
         self.dot.render('graph', format='png')
         self.ui.work_label_1.setPixmap(QPixmap('graph.png'))
 
     def delete_node(self, node_name=None):
         self.dot.body = [line for line in self.dot.body if f'label="{node_name}"' not in line]
         self.dot.body = sorted(self.dot.body, key=lambda x: x.split('"')[1] if '"' in x else x.split('[')[0])
-
-    #def delete_connection(self, node_1=None, node_2=None):
-        #self.dot.body = [line for line in self.dot.body if f'"{node_1}" -> "{node_2}"' not in line]
 
     def update_all_menus(self):
         node_names = self.get_nodes_names()
@@ -315,14 +307,11 @@ class Interface(QtWidgets.QWidget):
     def minimize(self):
         self.setWindowState(Qt.WindowState.WindowMinimized)
 
-    #def screenshot(self):
-        #pass
-
     def notification(self, option=None):
         options_dict = {
             "screenshot": "Скриншот был добавлен в буфер обмена",
             "wipe": "Рабочая область очищена",
-            "name exist": "Данное имя уже существует",
+            "name exists": "Данное имя уже существует",
             "no edges": "Вершины не соединены"
         }
         for key, val in options_dict.items():
@@ -337,16 +326,6 @@ class Interface(QtWidgets.QWidget):
         self.ui.change_color_menu.lower()
         self.ui.add_distance_menu.lower()
 
-    #def remove_duplicate_nodes(self):
-        #node_names = set()
-        #new_body = []
-        #for line in self.dot.body:
-            #name = line.strip().split(' ')[1].strip('"')
-            #if name not in node_names:
-                #node_names.add(name)
-                #new_body.append(line)
-        #self.dot.body = new_body
-
     def show_dicts(self):
         info = f"""
         vertices:
@@ -360,7 +339,7 @@ class Interface(QtWidgets.QWidget):
         """
         print(info)
 
-    #---------------------------------------#
+    # Support methods-----------------------#
 
 
 if __name__ == '__main__':

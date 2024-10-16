@@ -355,7 +355,7 @@ class Ui_Form(object):
         self.work_place_frame.setFrameShadow(QtWidgets.QFrame.Shadow.Raised)
         self.work_place_frame.setObjectName("work_place_frame")
         self.work_label_1 = QtWidgets.QLabel(parent=self.work_place_frame)
-        self.work_label_1.setGeometry(QtCore.QRect(0, 0, 1071, 481))
+        self.work_label_1.setGeometry(QtCore.QRect(0, 70, 1071, 501))
         self.work_label_1.setStyleSheet("background-color: transparent;\n"
 "border-color: transparent;")
         self.work_label_1.setText("")
@@ -526,7 +526,7 @@ class Ui_Form(object):
         font.setPointSize(11)
         self.textEdit.setFont(font)
         self.textEdit.viewport().setProperty("cursor", QtGui.QCursor(QtCore.Qt.CursorShape.IBeamCursor))
-        self.textEdit.setStyleSheet("background-color: rgb(126, 126, 126);\n"
+        self.textEdit.setStyleSheet("background-color: rgb(255, 255, 255);\n"
 "border: none;\n"
 "padding-top: 8px;")
         self.textEdit.setUndoRedoEnabled(True)
@@ -566,7 +566,7 @@ class Ui_Form(object):
         self.label_43.setGeometry(QtCore.QRect(154, 10, 255, 31))
         font = QtGui.QFont()
         font.setFamily("Bahnschrift")
-        font.setPointSize(12)
+        font.setPointSize(11)
         self.label_43.setFont(font)
         self.label_43.setStyleSheet("background-color: transparent;\n"
 "border: none;\n"
@@ -620,7 +620,7 @@ class Ui_Form(object):
         self.listWidget_2.viewport().setProperty("cursor", QtGui.QCursor(QtCore.Qt.CursorShape.PointingHandCursor))
         self.listWidget_2.setObjectName("listWidget_2")
         self.pushButton_15 = QtWidgets.QPushButton(parent=self.change_color_menu)
-        self.pushButton_15.setGeometry(QtCore.QRect(391, 10, 71, 27))
+        self.pushButton_15.setGeometry(QtCore.QRect(399, 10, 71, 27))
         font = QtGui.QFont()
         font.setFamily("Bahnschrift")
         font.setPointSize(10)
@@ -717,7 +717,7 @@ class Ui_Form(object):
         font.setFamily("Bahnschrift")
         font.setPointSize(11)
         self.textEdit_2.setFont(font)
-        self.textEdit_2.setStyleSheet("background-color: rgb(126, 126, 126);\n"
+        self.textEdit_2.setStyleSheet("background-color: rgb(255, 255, 255);\n"
 "border: none;\n"
 "padding-top: 8px;")
         self.textEdit_2.setObjectName("textEdit_2")
@@ -727,11 +727,11 @@ class Ui_Form(object):
         self.pushButton_9.setStyleSheet("background-color:transparent;")
         self.pushButton_9.setText("")
         self.pushButton_9.setObjectName("pushButton_9")
+        self.text_edit_menu.raise_()
+        self.connection_menu.raise_()
         self.change_color_menu.raise_()
         self.add_distance_menu.raise_()
-        self.text_edit_menu.raise_()
         self.notification_frame.raise_()
-        self.connection_menu.raise_()
         self.label.raise_()
         self.verticalLayoutWidget.raise_()
         self.pushButton.raise_()
