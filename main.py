@@ -364,7 +364,6 @@ class Interface(QtWidgets.QWidget):
         self.ui.add_distance_to_target_menu.lower()
     # Support methods-----------------------#
 
-
 if __name__ == '__main__':
     app = QApplication(sys.argv)
     mywindow = Interface()

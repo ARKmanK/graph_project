@@ -828,7 +828,7 @@ class Ui_Form(object):
         self.label_10.setText(_translate("Form", "Изменить цвет"))
         self.label_12.setText(_translate("Form", "Изменить название"))
         self.label_16.setText(_translate("Form", "Очистить область"))
-        self.plainTextEdit.setPlainText(_translate("Form", "hjkghjkgh"))
+        self.plainTextEdit.setPlainText(_translate("Form", ""))
         self.label_17.setText(_translate("Form", "Создать связь между"))
         self.pushButton_7.setText(_translate("Form", "Создать"))
         self.label_18.setText(_translate("Form", "И"))
