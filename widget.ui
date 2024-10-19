@@ -1698,6 +1698,7 @@ border: 2px solid black;</string>
      <string/>
     </property>
    </widget>
+<<<<<<< HEAD
    <widget class="QPushButton" name="pushButton_4">
     <property name="geometry">
      <rect>
@@ -1967,6 +1968,13 @@ padding-top: 8px;</string>
    <zorder>connection_menu</zorder>
    <zorder>notification_frame</zorder>
    <zorder>text_edit_menu</zorder>
+=======
+   <zorder>text_edit_menu</zorder>
+   <zorder>connection_menu</zorder>
+   <zorder>change_color_menu</zorder>
+   <zorder>add_distance_menu</zorder>
+   <zorder>notification_frame</zorder>
+>>>>>>> 9ac131d16ed0a95675529baa6b24eb4c6fbf4a00
    <zorder>label</zorder>
    <zorder>verticalLayoutWidget</zorder>
    <zorder>pushButton</zorder>
