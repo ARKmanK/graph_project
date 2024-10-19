@@ -1,5 +1,6 @@
 <RCC>
   <qresource prefix="newPrefix">
+    <file>img/a-no-bg-preview (carve.photos).png</file>
     <file>img/znachok1.png</file>
     <file>img/znachok2.png</file>
     <file>img/Без имени-2.png</file>

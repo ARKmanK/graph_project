@@ -39,7 +39,7 @@ class Interface(QtWidgets.QWidget):
 
         self.setWindowFlags(Qt.WindowType.FramelessWindowHint)
         self.ui.HeadLabel = DraggableLabel(self)        
-        self.ui.HeadLabel.setGeometry(0, 0, 840, 50)
+        self.ui.HeadLabel.setGeometry(0, 0, 1200, 50)
 
         self.ui.min_button.clicked.connect(self.minimize)
         self.ui.close_button.clicked.connect(self.close)
@@ -47,16 +47,19 @@ class Interface(QtWidgets.QWidget):
         self.ui.close_button_3.clicked.connect(self.close_all_menus)
         self.ui.close_button_7.clicked.connect(self.close_all_menus)
         self.ui.close_button_8.clicked.connect(self.close_all_menus)
+        self.ui.close_button_9.clicked.connect(self.close_all_menus)
         self.ui.pushButton.clicked.connect(self.add_node)
         self.ui.pushButton_2.clicked.connect(self.open_connection_menu)
         self.ui.pushButton_3.clicked.connect(self.open_add_distance_menu)
-        self.ui.pushButton_4.clicked.connect(self.open_change_color_menu)
-        self.ui.pushButton_5.clicked.connect(self.open_change_name_menu)
+        self.ui.pushButton_4.clicked.connect(self.open_add_distance_to_target_menu)
+        self.ui.pushButton_5.clicked.connect(self.open_change_color_menu)
+        self.ui.pushButton_8.clicked.connect(self.open_change_name_menu)
         
         self.ui.pushButton_9.clicked.connect(self.clear_graph)        
         self.ui.pushButton_6.clicked.connect(self.change_node_name)
         self.ui.pushButton_7.clicked.connect(self.add_connection)
         self.ui.pushButton_16.clicked.connect(self.add_distance)
+        self.ui.pushButton_17.clicked.connect(self.add_distance_to_target)
         self.ui.pushButton_15.clicked.connect(self.change_color_original)
         
         self.ui.listWidget.itemSelectionChanged.connect(self.change_color_yellow)
@@ -74,44 +77,52 @@ class Interface(QtWidgets.QWidget):
         #--------------------------------------------------------#
 
     # Main methods--------------------------#
-    def open_change_name_menu(self):        
+    def open_change_name_menu(self):
         self.close_all_menus()
-        self.ui.text_edit_menu.raise_()
-        node_names = self.get_nodes_names()
+        self.ui.text_edit_menu.raise_()        
         self.ui.comboBox_4.clear()
+        node_names = self.get_nodes_names()
         for node_name in node_names:
             self.ui.comboBox_4.addItem(node_name)
 
     def open_connection_menu(self):
         self.close_all_menus()
-        self.ui.connection_menu.raise_()
-        node_names = self.get_nodes_names()
+        self.ui.connection_menu.raise_()        
         self.ui.comboBox_2.clear()
         self.ui.comboBox_3.clear()
+        node_names = self.get_nodes_names()
         for node_name in node_names:
             self.ui.comboBox_2.addItem(node_name)
             self.ui.comboBox_3.addItem(node_name)
 
     def open_change_color_menu(self):
         self.close_all_menus()
-        self.ui.change_color_menu.raise_()
-        node_names = self.get_nodes_names()
+        self.ui.change_color_menu.raise_()        
         self.ui.listWidget.clear()
         self.ui.listWidget_2.clear()
         self.ui.listWidget_3.clear()
+        node_names = self.get_nodes_names()
         self.ui.listWidget.addItems(node_names)
         self.ui.listWidget_2.addItems(node_names)
         self.ui.listWidget_3.addItems(node_names)
 
     def open_add_distance_menu(self):
         self.close_all_menus()
-        self.ui.add_distance_menu.raise_()
-        node_names = self.get_nodes_names()
+        self.ui.add_distance_menu.raise_()        
         self.ui.comboBox_5.clear()
         self.ui.comboBox_6.clear()
+        node_names = self.get_nodes_names()
         for node_name in node_names:
             self.ui.comboBox_5.addItem(node_name)
             self.ui.comboBox_6.addItem(node_name)
+
+    def open_add_distance_to_target_menu(self):
+        self.close_all_menus()
+        self.ui.add_distance_to_target_menu.raise_()        
+        self.ui.comboBox_7.clear()
+        node_names = self.get_nodes_names()
+        for node_name in node_names:
+            self.ui.comboBox_7.addItem(node_name)
 
     def change_node_name(self):
         old_node_name = self.ui.comboBox_4.currentText()
@@ -119,7 +130,7 @@ class Interface(QtWidgets.QWidget):
 
         # Проверка на дубликат
         for key, val in self.vertices.items():
-            if new_node_name == val:
+            if new_node_name == val[0]:
                 self.notification("name exists")
                 return
         for key, val in self.edges.items():
@@ -133,8 +144,8 @@ class Interface(QtWidgets.QWidget):
 
         # Замена имени на новое
         for key, val in self.vertices.items():
-            if val == old_node_name: 
-                self.vertices[key] = new_node_name
+            if val[0] == old_node_name: 
+                self.vertices[key] = [new_node_name]
         for key, val in self.edges.items():
             if val[0] == old_node_name:
                 self.edges[key] = [new_node_name, val[1]]
@@ -144,7 +155,6 @@ class Interface(QtWidgets.QWidget):
             if val[0] == old_node_name:
                 self.colors[key] = [new_node_name, val[1]]
 
-        self.show_dicts()
         self.update_all_menus()
         self.render_and_show()
 
@@ -222,19 +232,34 @@ class Interface(QtWidgets.QWidget):
             return
         self.render_and_show()
 
+    def add_distance_to_target(self):
+        node = self.ui.comboBox_7.currentText()
+        length = self.ui.textEdit_3.toPlainText()
+        
+        for key, val in self.vertices.items():
+            if val[0] == node:
+                self.vertices[key] = [val[0], length]
+                self.render_and_show()
+                return
+        for key, val in self.colors.items():
+            if val[0] == node:
+                self.colors[key] = [val[0], val[1], length]
+                break
+
+        self.render_and_show()
+
     def add_node(self):
         self.node_count += 1        
-        self.vertices[self.node_count] = f"Узел {self.node_count}"
+        self.vertices[self.node_count] = [f"Узел {self.node_count}"]
         self.render_and_show()
         self.update_all_menus()
-
     # Main methods--------------------------#
 
     # Support methods-----------------------#
     def get_nodes_names(self):
         node_names = set()
         for val in self.vertices.values():
-            node_names.add(val)
+            node_names.add(val[0])
         for val in self.edges.values():
             if len(val) == 2:
                 node_names.update(val)
@@ -259,18 +284,25 @@ class Interface(QtWidgets.QWidget):
         self.close_all_menus()
 
     def render_and_show(self):
-        self.show_dicts()
         self.dot.clear()
 
-        for node, label in self.vertices.items():
-            self.dot.node(label, label)
+        for key, val in self.vertices.items():
+            if len (val) == 1:
+                self.dot.node(val[0])
+            elif len(val) == 2:
+                self.dot.node(val[0])
+                self.dot.node(val[0], xlabel=f"<<font color=\"red\">{val[1]}</font>>")
         for edge in self.edges.values():
             if len(edge) == 2:
                 self.dot.edge(edge[0], edge[1])
             elif len(edge) == 3:
                 self.dot.edge(edge[0], edge[1], label=edge[2])
-        for color in self.colors.values():
-            self.dot.node(color[0], style="filled", fillcolor=color[1])
+        for val in self.colors.values():
+            if len(val) == 2:
+                self.dot.node(val[0], style="filled", fillcolor=val[1])
+            elif len(val) == 3:
+                self.dot.node(val[0], style="filled", fillcolor=val[1])
+                self.dot.node(val[0], xlabel=f"<<font color=\"red\">{val[2]}</font>>")
 
         self.dot.attr(rankdir='LR')
         self.dot.render('graph', format='png')
@@ -303,6 +335,10 @@ class Interface(QtWidgets.QWidget):
         self.ui.comboBox_4.clear()
         for node_name in node_names:
             self.ui.comboBox_4.addItem(node_name)
+        # Target distance menu
+        self.ui.comboBox_7.clear()
+        for node_name in node_names:
+            self.ui.comboBox_7.addItem(node_name)
 
     def minimize(self):
         self.setWindowState(Qt.WindowState.WindowMinimized)
@@ -325,20 +361,7 @@ class Interface(QtWidgets.QWidget):
         self.ui.connection_menu.lower()
         self.ui.change_color_menu.lower()
         self.ui.add_distance_menu.lower()
-
-    def show_dicts(self):
-        info = f"""
-        vertices:
-        {self.vertices}
-
-        edges:
-        {self.edges}
-
-        colors:
-        {self.colors}
-        """
-        print(info)
-
+        self.ui.add_distance_to_target_menu.lower()
     # Support methods-----------------------#
 
 
