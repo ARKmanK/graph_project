@@ -1,7 +1,0 @@
-// Моя диаграмма
-digraph {
-	"Узел 1"
-	"Узел 1" [xlabel=<<font color="red">4</font>>]
-	"Узел 1" [fillcolor=white style=filled]
-	rankdir=LR
-}

@@ -1,10 +1,11 @@
 import sys
-import graphviz
 import re
+import os
 
 
+from graphviz import Digraph
 from PyQt6 import QtWidgets
-from PyQt6.QtWidgets import QApplication, QLabel, QVBoxLayout, QHBoxLayout
+from PyQt6.QtWidgets import QApplication, QLabel
 from des_widget import Ui_Form
 from PyQt6.QtCore import Qt, QTimer
 from PyQt6.QtGui import QPixmap
@@ -39,7 +40,7 @@ class Interface(QtWidgets.QWidget):
 
         self.setWindowFlags(Qt.WindowType.FramelessWindowHint)
         self.ui.HeadLabel = DraggableLabel(self)        
-        self.ui.HeadLabel.setGeometry(0, 0, 1200, 50)
+        self.ui.HeadLabel.setGeometry(0, 0, 1020, 50)
 
         self.ui.min_button.clicked.connect(self.minimize)
         self.ui.close_button.clicked.connect(self.close)
@@ -61,19 +62,23 @@ class Interface(QtWidgets.QWidget):
         self.ui.pushButton_16.clicked.connect(self.add_distance)
         self.ui.pushButton_17.clicked.connect(self.add_distance_to_target)
         self.ui.pushButton_15.clicked.connect(self.change_color_original)
+        self.ui.pushButton_10.clicked.connect(self.open_file)
         
         self.ui.listWidget.itemSelectionChanged.connect(self.change_color_yellow)
         self.ui.listWidget_2.itemSelectionChanged.connect(self.change_color_green)
         self.ui.listWidget_3.itemSelectionChanged.connect(self.change_color_white)
 
         #--------------------------------------------------------#
-        self.dot = graphviz.Digraph(comment='Моя диаграмма')
+        self.dot = Digraph(comment='Моя диаграмма')
         self.node_count = 0
         self.edge_count = 0
         self.colors_count = 0
         self.vertices = {}
         self.edges = {}
         self.colors = {}
+
+        self.FILE_ADD = False
+        self.CLEAR_GRAPH = False
         #--------------------------------------------------------#
 
     # Main methods--------------------------#
@@ -249,10 +254,70 @@ class Interface(QtWidgets.QWidget):
         self.render_and_show()
 
     def add_node(self):
+        if self.CLEAR_GRAPH:
+            self.notification("overwrite")
+            self.CLEAR_GRAPH = False
+            self.FILE_ADD = False
+            return
         self.node_count += 1        
         self.vertices[self.node_count] = [f"Узел {self.node_count}"]
         self.render_and_show()
         self.update_all_menus()
+
+    def open_file(self):
+        try:
+            file_name, _ = QtWidgets.QFileDialog.getOpenFileName(self, 'Открыть файл', '.', 'Все файлы (*)')
+            if file_name:
+                with open(file_name, 'r' , encoding='utf-8') as file:
+                    content = file.read()
+                    self.parse_content(content) 
+            self.FILE_ADD = True
+        except:
+            self.notification("file error")
+
+    def parse_content(self, content):
+        lines = [line.strip().replace('\t', '').replace('"', '')
+                for line in content.split('\n')[2:-1]]
+
+        # Заполнение self.vertices
+        for line in lines:
+            if '->' not in line and line not in {'rankdir=LR', '}'} and 'fillcolor' not in line:
+                if 'xlabel' in line:
+                    node, number = line.split(' [xlabel=')[0].strip(), re.search(r'>\d+<', line).group(0).strip('><')
+                    for key, val in self.vertices.items():
+                        if val[0] == node:
+                            self.vertices[key] = [node, number]
+                            break
+                    else:
+                        self.vertices[self.node_count] = [node, number]
+                        self.node_count += 1
+                else:
+                    node = line
+                    if node not in (val[0] for val in self.vertices.values()):
+                        self.vertices[self.node_count] = [node]
+                        self.node_count += 1
+
+        # Заполнение self.edges
+        for line in lines:
+            if '->' in line:
+                node_1, node_2 = map(str.strip, line.split('->'))
+                if '[' in node_2:
+                    node_2, label = node_2.split('[')
+                    label = label.replace(']', '').replace('label=', '').strip()
+                    self.edges[self.edge_count] = [node_1, node_2.strip(), label]
+                else:
+                    self.edges[self.edge_count] = [node_1, node_2]
+                self.edge_count += 1
+
+        # Заполнение self.colors
+        for line in lines:
+            if '[' in line and '->' not in line:
+                node, color_part = line.split('[')
+                color = next(part.split('=')[1] for part in color_part.replace(']', '')
+                            .split() if 'fillcolor' in part)
+                self.colors[self.colors_count] = [node.strip(), color]
+                self.colors_count += 1
+        self.render_and_show()
     # Main methods--------------------------#
 
     # Support methods-----------------------#
@@ -272,6 +337,8 @@ class Interface(QtWidgets.QWidget):
         return node_names
 
     def clear_graph(self):
+        if self.FILE_ADD:
+            self.CLEAR_GRAPH = True
         self.dot.clear()
         self.node_count = 0
         self.edge_count = 0
@@ -348,7 +415,9 @@ class Interface(QtWidgets.QWidget):
             "screenshot": "Скриншот был добавлен в буфер обмена",
             "wipe": "Рабочая область очищена",
             "name exists": "Данное имя уже существует",
-            "no edges": "Вершины не соединены"
+            "no edges": "Вершины не соединены",
+            "file error": "Открыт неподходящий",
+            "overwrite": "Данное действие перезапишет файл, вы уверены?"
         }
         for key, val in options_dict.items():
             if option == key:
@@ -365,7 +434,8 @@ class Interface(QtWidgets.QWidget):
     # Support methods-----------------------#
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
+    os.environ["PATH"] += os.pathsep + "./Graphviz/bin"
     app = QApplication(sys.argv)
     mywindow = Interface()
     mywindow.show()

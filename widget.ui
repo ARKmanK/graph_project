@@ -150,7 +150,7 @@ border: none;</string>
           <widget class="QFrame" name="frame_14">
            <property name="minimumSize">
             <size>
-             <width>225</width>
+             <width>174</width>
              <height>0</height>
             </size>
            </property>
@@ -168,6 +168,12 @@ border-color: transparent;</string>
          </item>
          <item>
           <widget class="QFrame" name="frame_12">
+           <property name="minimumSize">
+            <size>
+             <width>0</width>
+             <height>0</height>
+            </size>
+           </property>
            <property name="styleSheet">
             <string notr="true">background-color: transparent;
 border-color: transparent;</string>
@@ -178,6 +184,35 @@ border-color: transparent;</string>
            <property name="frameShadow">
             <enum>QFrame::Raised</enum>
            </property>
+           <widget class="QPushButton" name="pushButton_10">
+            <property name="enabled">
+             <bool>true</bool>
+            </property>
+            <property name="geometry">
+             <rect>
+              <x>10</x>
+              <y>9</y>
+              <width>111</width>
+              <height>31</height>
+             </rect>
+            </property>
+            <property name="font">
+             <font>
+              <family>Bahnschrift</family>
+              <pointsize>10</pointsize>
+             </font>
+            </property>
+            <property name="cursor">
+             <cursorShape>PointingHandCursor</cursorShape>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">background-color: rgb(255, 255, 255);
+border: 2px solid black;</string>
+            </property>
+            <property name="text">
+             <string>Открыть файл</string>
+            </property>
+           </widget>
           </widget>
          </item>
          <item>
@@ -1361,7 +1396,7 @@ border: none;</string>
       <rect>
        <x>63</x>
        <y>50</y>
-       <width>63</width>
+       <width>71</width>
        <height>31</height>
       </rect>
      </property>
@@ -1386,7 +1421,7 @@ border: none;
       <rect>
        <x>228</x>
        <y>50</y>
-       <width>71</width>
+       <width>81</width>
        <height>31</height>
       </rect>
      </property>
@@ -1962,6 +1997,7 @@ padding-top: 8px;</string>
     <zorder>textEdit_3</zorder>
     <zorder>close_button_9</zorder>
    </widget>
+   <zorder>change_color_menu</zorder>
    <zorder>add_distance_to_target_menu</zorder>
    <zorder>add_distance_menu</zorder>
    <zorder>connection_menu</zorder>
@@ -1977,7 +2013,6 @@ padding-top: 8px;</string>
    <zorder>pushButton_8</zorder>
    <zorder>pushButton_9</zorder>
    <zorder>label_25</zorder>
-   <zorder>change_color_menu</zorder>
   </widget>
  </widget>
  <resources>
